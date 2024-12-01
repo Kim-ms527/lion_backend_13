@@ -1,0 +1,47 @@
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+out/
+
+# Gradle specific files
+.gradle/
+build/
+
+# Avoid Gradle wrapper jar files being ignored
+!gradle/wrapper/gradle-wrapper.jar
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Compiled source files
+*.class
+*.swp
+*.swo
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+*.stackdump
+
+# Linux specific files
+*.pid
+
+# Spring Boot specific files
+*.jar
+*.war
+
+# Test results
+test-results/
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
