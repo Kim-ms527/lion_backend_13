@@ -1,5 +1,7 @@
 package day02;
 
+import java.util.Scanner;
+
 public class WhileExam2 {
     public static void main(String[] args) {
         System.out.println(args[0]);
