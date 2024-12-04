@@ -9,6 +9,7 @@ public class ArrayExam {
 
         int sum = score1+score2+score3+score4;
 
+        String[] str;
         //배열
         //배열을 선언 , 사용
         //변수선언..  타입 변수명
@@ -54,7 +55,7 @@ public class ArrayExam {
 
         System.out.println("lotto평균"+(sum2/ lotto.length));
 
-        String[] str;
+//        String[] str;
 
         str = new String[3];
         str[0] = "hello";
@@ -79,5 +80,10 @@ public class ArrayExam {
 
 
 
+        int[] iarr8 = new int[]{1,2,3};  //int[] iarr8={1,2,3}
+
+        int[][] iarr9 = {{1,2,3},{4,5,6},{7,8,9}};
+
+        int[][] iarr10 = {{1,2},{6,7,78,89,6,56,4,4}};
     }
 }
