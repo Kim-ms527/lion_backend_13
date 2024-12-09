@@ -16,14 +16,17 @@ public class Pen {
 
     //생성자  접근제한자 메소드명=클래스명(매개변수들..  - 초기화할 값들..)
     // color, price  초기화되면 좋겠다.
-    public Pen(String color, int price){
-       this.color = color;
+    public Pen(String name, int price){
+//       this.name = name;
+        this(name);
        this.price = price;
     }
     public Pen(String name, String color, int price){
-        this.name = name;
+//        this.name = name;
+//
+//        this.price = price;
+        this(name,price);
         this.color = color;
-        this.price = price;
     }
 
     public String getName() {
