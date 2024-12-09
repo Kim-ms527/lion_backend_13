@@ -7,22 +7,24 @@ class Bird{
     }
 }
 class 비둘기 extends Bird{
-    @Override
+
     public void song() {
         System.out.println("구구구구");
     }
 }
 class 오리 extends Bird{
-    @Override
+
     public void song() {
         System.out.println("꽥꽥");
     }
 }
 class 참새 extends Bird{
-    @Override
+//    @Override
     public void song() {
         System.out.println("짹짹");
     }
+
+
 }
 public class BirdExam {
     public static void main(String[] args) {
