@@ -16,4 +16,9 @@ public class Rectangle extends Shape{
     public double getArea() {
         return width * height;
     }
+
+    @Override
+    public void draw() {
+        System.out.println("사각형을 그립니다.");
+    }
 }

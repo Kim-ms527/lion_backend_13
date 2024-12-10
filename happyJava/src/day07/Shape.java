@@ -12,4 +12,6 @@ public abstract class Shape {
     }
 
     public abstract double getArea(); //어떤 도형이든 면적을 계산하는 기능은 반드시 필요하다라고..
+
+    public abstract void draw();
 }

@@ -9,14 +9,17 @@ public class ShapeTest {
 
         System.out.println("색상 : "+ shape.getColor());
         System.out.println("면적 : " + shape.getArea() );
+        shape.draw();
 
 
         Shape triangle = new Triangle("red",10,5);
         System.out.println(triangle.getArea());
+        triangle.draw();
 
 
         Rectangle rectangle = new Rectangle("orange", 10, 20);
         System.out.println(rectangle.getColor());
         System.out.println(rectangle.getArea());
+        rectangle.draw();
     }
 }

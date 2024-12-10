@@ -13,4 +13,9 @@ public class Circle extends Shape{
     public double getArea() {
         return Math.PI * radius * radius;
     }
+
+    @Override
+    public void draw() {
+        System.out.println("원을그립니다.");
+    }
 }
