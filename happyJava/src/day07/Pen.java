@@ -12,6 +12,11 @@ public class Pen {
 
     }
 
+    @Override
+    public String toString() {
+        return "나는 펜이예요.";
+    }
+
     public void print(){
         System.out.println("a");
         System.out.println("b");

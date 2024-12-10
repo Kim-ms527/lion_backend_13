@@ -16,6 +16,11 @@ public class BallPen extends Pen{
         System.out.println("BallPen이 씁니다. 색:"+color);
     }
 
+    @Override
+    public String toString() {
+        return "나는 볼펜이예요.";
+    }
+
     public void print(){
         //생성자는 객체가 생성될때 한 번 불려쓰이기때문에
         //생성자에서만 호출이 가능하다.
