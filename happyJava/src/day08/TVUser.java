@@ -15,13 +15,25 @@ public class TVUser {
 //        stv.volumeUp();
 //        stv.togglePower();
 
-        LTV ltv = new LTV();
-        ltv.setPower();
-        ltv.channUp();
-        ltv.channUp();
-        ltv.soundUp();
-        ltv.channUp();
-        ltv.soundUp();
-        ltv.setPower();
+//        LTV ltv = new LTV();
+//        ltv.setPower();
+//        ltv.channUp();
+//        ltv.channUp();
+//        ltv.soundUp();
+//        ltv.channUp();
+//        ltv.soundUp();
+//        ltv.setPower();
+
+        //인테페이스를 이용해서 TV 를 사용할 때..
+        TV tv = new LTV();
+        tv.togglePower();
+        tv.channelUp();
+        tv.channelUp();
+        tv.volumeDown();
+        tv.channelUp();
+        tv.volumeUp();
+        tv.togglePower();
+
+
     }
 }
