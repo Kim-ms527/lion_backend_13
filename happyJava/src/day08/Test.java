@@ -8,5 +8,9 @@ public class Test {
         Calculator calculator = new Calculator();
         calculator.add();
 
+
+//        Math.PI
+
+        System.out.println(Integer.MIN_VALUE);
     }
 }
