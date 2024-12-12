@@ -10,7 +10,9 @@ public class ExceptionExam04 {
         try {
             System.out.println(10 / i);
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("다른마트 감");
+            //아무일도 안함
         }
 
         System.out.println("심부름 끝");
@@ -29,11 +31,11 @@ public class ExceptionExam04 {
 
     public static void main(String[] args) {
         //엄마가 심부름 시킴.
-//        심부름();
-        try {
-            심부름2();
-        }catch (Exception e){
-            System.out.println("동생에게 시킴");
-        }
+        심부름();
+//        try {
+//            심부름2();
+//        }catch (Exception e){
+//            System.out.println("동생에게 시킴");
+//        }
     }
 }

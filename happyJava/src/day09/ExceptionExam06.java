@@ -16,7 +16,7 @@ public class ExceptionExam06 {
             //이 상황이 예외라고 정의하고 예외를 발생 시킬 수 있다.
 //            throw new Exception("점수는 0-100까지만 유요합니다.");
 //            throw new MyException();
-            throw new MyException("점수는 0-100까지만 유요합니다.");
+            throw new MyException("점수는 0-100까지만 유요합니다. 사용자는 "+score+" 를 입력했습니다.");
         }
         System.out.println("학생의 점수 :::  90"+score);
     }
