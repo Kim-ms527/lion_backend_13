@@ -67,6 +67,12 @@ select * from emp where ename like '____';
 select * from emp where ename like '%s';
 select * from emp where ename like '%s';
 
+select * from emp where deptno = 10 or deptno = 20;
+select * from emp where deptno in (10, 20);
+select * from emp where job in ('Mananger','clerk','analyst');
+select * from emp where job not in ('MANAGER','clerk','analyst');
+select * from emp where deptno not in (10, 20);
+
 
 
 
