@@ -1,0 +1,312 @@
+## **자바 기본 개념 평가 문제 (총 20문제)**  
+
+---
+
+### **1. 다음 중 상속에 대한 설명으로 **틀린 것**은 무엇인가요?**  
+1. 상속을 통해 코드를 재사용할 수 있다.  
+2. 자바에서 클래스는 단일 상속만 가능하다.  
+3. `extends` 키워드를 사용하여 다른 클래스를 상속받을 수 있다.  
+4. 부모 클래스의 모든 멤버 변수와 메서드는 무조건 자식 클래스에서 접근 가능하다.  
+5. 상속받은 메서드는 자식 클래스에서 재정의(Override)할 수 있다.  
+
+---
+
+### **2. 다음 코드의 출력 결과는 무엇인가요?**  
+```java
+class Parent {
+    void display() { System.out.println("Parent"); }
+}
+
+class Child extends Parent {
+    void display() { System.out.println("Child"); }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        p.display();
+    }
+}
+```
+1. Parent  
+2. Child  
+3. 컴파일 오류  
+4. 실행 오류  
+5. 아무것도 출력되지 않는다  
+
+---
+
+### **3. 다음 중 **추상 클래스**에 대한 설명으로 **틀린 것**은 무엇인가요?**  
+1. 추상 클래스는 `abstract` 키워드를 사용하여 선언한다.  
+2. 추상 클래스는 객체를 생성할 수 없다.  
+3. 추상 클래스에는 추상 메서드만 선언할 수 있다.  
+4. 추상 클래스는 다른 클래스를 상속받을 수 있다.  
+5. 추상 클래스는 일반 메서드와 필드를 포함할 수 있다.  
+
+---
+
+### **4. 다음 중 **인터페이스**에 대한 설명으로 **틀린 것**은 무엇인가요?**  
+1. 인터페이스는 `implements` 키워드를 사용해 구현한다.  
+2. 인터페이스에 선언된 메서드는 기본적으로 `public abstract`이다.  
+3. 인터페이스는 다중 구현이 가능하다.  
+4. 인터페이스에는 생성자를 선언할 수 있다.  
+5. 인터페이스에는 상수만 선언할 수 있다.  
+
+---
+
+### **5. 다음 코드의 실행 결과로 옳은 것은 무엇인가요?**  
+```java
+public class Test {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("예외 발생");
+        } finally {
+            System.out.println("마무리 작업");
+        }
+    }
+}
+```
+1. 예외 발생  
+2. 마무리 작업  
+3. 예외 발생  
+   마무리 작업  
+4. 컴파일 오류  
+5. 아무것도 출력되지 않는다  
+
+---
+
+### **6. 다음 중 예외 처리를 위해 사용되는 키워드로 **틀린 것**은 무엇인가요?**  
+1. `try`  
+2. `catch`  
+3. `throw`  
+4. `throws`  
+5. `return`  
+
+---
+
+### **7. 다음 코드의 결과로 옳은 것은 무엇인가요?**  
+```java
+class A {
+    public String toString() { return "A"; }
+}
+
+class B extends A {
+    public String toString() { return "B"; }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        A obj = new B();
+        System.out.println(obj);
+    }
+}
+```
+1. A  
+2. B  
+3. 컴파일 오류  
+4. 실행 오류  
+5. null  
+
+---
+
+### **8. 다음 코드의 실행 결과는 무엇인가요?**  
+```java
+String str1 = "java";
+String str2 = "java";
+String str3 = new String("java");
+
+System.out.println(str1 == str2);
+System.out.println(str1 == str3);
+```
+1. true true  
+2. true false  
+3. false true  
+4. false false  
+5. 컴파일 오류  
+
+---
+
+### **9. 다음 중 `this` 키워드의 사용으로 **틀린 것**은 무엇인가요?**  
+1. 인스턴스 변수를 참조할 때 사용한다.  
+2. 현재 객체를 가리킨다.  
+3. 클래스 변수(static)를 참조할 때 사용한다.  
+4. 생성자에서 다른 생성자를 호출할 때 사용된다.  
+5. 메서드 내에서 현재 객체를 반환할 때 사용된다.  
+
+---
+
+### **10. 다음 중 **메서드 오버로딩**에 대한 설명으로 옳은 것은 무엇인가요?**  
+1. 메서드의 이름이 다르면 오버로딩이다.  
+2. 매개변수의 타입이나 개수가 다르면 오버로딩이다.  
+3. 리턴 타입만 다르면 오버로딩이다.  
+4. 메서드의 접근 제어자가 다르면 오버로딩이다.  
+5. 메서드가 상속받은 메서드를 재정의하면 오버로딩이다.  
+
+---
+
+### **11. 클래스를 기반으로 **객체를 생성**하는 키워드는 무엇인가요?**  
+1. `this`  
+2. `new`  
+3. `static`  
+4. `final`  
+5. `abstract`  
+
+---
+
+### **12. 생성자에 대한 설명 중 **틀린 것**은 무엇인가요?**  
+1. 생성자는 클래스와 동일한 이름을 가진다.  
+2. 생성자는 반환 타입을 명시할 수 없다.  
+3. 생성자는 객체 생성 시 자동으로 호출된다.  
+4. 생성자는 상속될 수 있다.  
+5. 생성자는 오버로딩될 수 있다.  
+
+---
+
+### **13. 다음 중 접근 제어자에 대한 설명으로 **틀린 것**은 무엇인가요?**  
+1. `public`: 모든 클래스에서 접근 가능하다.  
+2. `private`: 같은 클래스 내에서만 접근 가능하다.  
+3. `protected`: 같은 패키지 또는 다른 패키지의 하위 클래스에서 접근 가능하다.  
+4. 접근 제어자가 없으면 `default` 접근 제어자가 적용된다.  
+5. `protected`는 상속과 관계없이 접근이 가능하다.  
+
+---
+
+### **14. 다음 코드의 출력 결과는 무엇인가요?**  
+```java
+class Parent {}
+class Child extends Parent {}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent p = new Child();
+        System.out.println(p instanceof Child);
+    }
+}
+```
+1. true  
+2. false  
+3. 컴파일 오류  
+4. 실행 오류  
+5. 아무것도 출력되지 않는다  
+
+---
+
+### **15. 다음 중 **추상 클래스**와 **인터페이스**의 차이점에 대한 설명으로 옳은 것은 무엇인가요?**  
+1. 추상 클래스는 메서드를 구현할 수 없지만, 인터페이스는 구현할 수 있다.  
+2. 인터페이스는 `extends` 키워드를 사용하지만, 추상 클래스는 `implements`를 사용한다.  
+3. 추상 클래스는 필드와 생성자를 가질 수 있지만, 인터페이스는 가질 수 없다.  
+4. 인터페이스는 단일 상속만 가능하지만, 추상 클래스는 다중 상속이 가능하다.  
+5. 추상 클래스와 인터페이스 모두 객체를 생성할 수 있다.  
+
+---
+
+### **16. 다음 코드의 실행 결과로 옳은 것은 무엇인가요?**  
+```java
+public class Test {
+    public static void main(String[] args) {
+        try {
+            System.out.println("try");
+            throw new RuntimeException();
+        } catch (Exception e) {
+            System.out.println("catch");
+        } finally {
+            System.out.println("finally");
+        }
+    }
+}
+```
+1. try  
+   catch  
+2. try  
+   catch  
+   finally  
+3. try  
+   finally  
+4. catch  
+   finally  
+5. 실행 오류  
+
+---
+
+### **17. 다음 중 `StringBuilder` 클래스에 대한 설명으로 **틀린 것**은 무엇인가요?**  
+1. `StringBuilder`는 문자열을 변경할 수 있다.  
+2. `StringBuilder`는 `String` 클래스보다 성능이 우수하다.  
+3. `StringBuilder`는 멀티스레드 환경에서 안전하다.  
+4. `append()` 메서드를 사용해 문자열을 추가할 수 있다.  
+5. `StringBuilder`는 `toString()` 메서드를 제공한다.  
+
+---
+
+### **18. 다음 중 **메서드 오버라이딩**에 대한 조건으로 **틀린 것**은 무엇인가요?**  
+1. 메서드 이름이 같아야 한다.  
+2. 매개변수의 개수와 타입이 같아야 한다.  
+3. 리턴 타입이 같아야 한다.  
+4. 접근 제어자는 부모 클래스 메서드보다 더 좁을 수 있다.  
+5. 상속 관계에서만 오버라이딩이 가능하다.  
+
+---
+
+### **19. 다음 코드의 실행 결과는 무엇인가요?**  
+```java
+class A {
+    A() { System.out.println("A 생성자"); }
+}
+
+class B extends A {
+    B() { System.out.println("B 생성자"); }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        B b = new B();
+    }
+}
+```
+1. A 생성자  
+2. B 생성자  
+3. A 생성자  
+   B 생성자  
+4. 컴파일 오류  
+5. 실행 오류  
+
+---
+
+### **20. 다음 중 **자바의 기본 데이터 타입**이 아닌 것은 무엇인가요?**  
+1. `int`  
+2. `float`  
+3. `boolean`  
+4. `String`  
+5. `char`  
+
+---
+
+
+## **정답 리스트**
+
+| 문제 번호 | 정답 |
+| --------- | ---- |
+| 1         | 4    |
+| 2         | 2    |
+| 3         | 3    |
+| 4         | 4    |
+| 5         | 3    |
+| 6         | 5    |
+| 7         | 2    |
+| 8         | 2    |
+| 9         | 3    |
+| 10        | 2    |
+| 11        | 2    |
+| 12        | 4    |
+| 13        | 5    |
+| 14        | 1    |
+| 15        | 3    |
+| 16        | 2    |
+| 17        | 3    |
+| 18        | 4    |
+| 19        | 3    |
+| 20        | 4    |
+
+---
+
