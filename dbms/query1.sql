@@ -69,10 +69,46 @@ select * from emp where ename like '%s';
 
 select * from emp where deptno = 10 or deptno = 20;
 select * from emp where deptno in (10, 20);
-select * from emp where job in ('Mananger','clerk','analyst');
+select * from emp where job in ('MANAGER','clerk','analyst');
 select * from emp where job not in ('MANAGER','clerk','analyst');
 select * from emp where deptno not in (10, 20);
 
 
+select upper('Test') , lower('Test');
 
+select upper(ename), lower(ename) from emp;
+select ucase(ename) from emp;
+-- DBMS들은 인덱스를 대체로 1번부터 사용한다. 
+select substring('Happy Day',3,2);  -- 3번 인덱스에서부터 2자 잘라주세요.
+
+select substring('Happy Day',5,3); 
+desc emp;
+select date_add(hiredate,INTERVAL 1 DAY) from emp;
+select * from emp;
+
+SELECT REVERSE('abc');  -- from 테이블절이 없이 수행.    orcle--  from dual;
+
+select reverse(ename) from emp;
+
+use hr;
+show tables;
+desc employees;
+
+
+
+
+select * from employees;
+
+select * from employees where first_name = 'Karen';
+
+select * from employees where employee_id = 114;
+desc employees;
+-- index 조회
+show index from employees;
+-- index 생성
+create index ind_employees_first_name on employees(first_name);
+-- index 삭제
+drop index ind_employees_first_name on employees;
+
+use scott;
 
