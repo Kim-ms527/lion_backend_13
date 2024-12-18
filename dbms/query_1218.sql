@@ -72,14 +72,79 @@ select empno, ename, dname ,sal from emp, dept where emp.deptno = dept.deptno;
 select empno, ename,emp.deptno, dname ,sal from emp, dept where emp.deptno = dept.deptno;
 
 -- 각 컬럼의 이름앞에 어떤 테이블의 컬럼인지를 명시적으로 쓰는게 좋다. 
-select e.empno, e.ename, e.deptno, d.dname ,e.sal from emp e, dept d where e.deptno = d.deptno;
+select e.empno, e.ename, e.deptno, d.dname ,e.sal from emp e, dept d 
+where e.deptno = d.deptno;
 
 
-
+desc emp;
 desc dept;
 select * from dept;
 select * from emp;
 
 select * from emp, dept;
 
+use scott;
 
+select distinct deptno from emp;
+
+select e.ename, e.deptno, d.dname from emp e, dept d 
+where e.deptno = d.deptno;
+desc emp;
+insert into emp values(1111,'kang','teacher',null,null,7000,null,null); 
+
+-- 사원 이름과 부서명을 출력하세요. 단 부서번호가 20 번인 사원만 출력하세요. 
+select e.ename,d.dname from emp e ,dept d
+where e.deptno = d.deptno
+and d.deptno = 20; 
+
+desc salgrade;
+
+
+select * from salgrade;
+
+-- theta join 
+select e.ename, e.sal, s.grade 
+from emp e, salgrade s
+where e.sal between s.min_salary and s.max_salary;
+
+-- Natural join  이름이 같은 컬럼이 
+-- 두 테이블에 존재하면 그 이름을 기준으로 조인조건을 만든다. 
+
+select e.ename,d.dname from emp e ,dept d
+where e.deptno = d.deptno;
+
+select e.ename,d.dname 
+from emp e natural join dept d;
+
+select e.ename,d.dname 
+from emp e join dept d  using(deptno);
+
+select e.ename,d.dname 
+from emp e join dept d  on(e.deptno=d.deptno) ;
+
+select e.ename,d.dname 
+from emp e left join dept d  on(e.deptno=d.deptno) ;
+
+select e.ename,d.dname 
+from emp e right join dept d  on(e.deptno=d.deptno) ;
+
+select e.ename,d.dname 
+from emp e left join dept d  on(e.deptno=d.deptno) 
+union
+select e.ename,d.dname 
+from emp e right join dept d  on(e.deptno=d.deptno) ;
+
+-- self join 
+-- 사원의 사번과, 이름, 매니저 사번, 매니저 이름을 알고 싶다. 
+select e.empno 사번, e.ename 사원이름, 
+	m.empno 매니저사번, m.ename 매니저이름
+from emp e, emp m
+where e.mgr = m.empno;
+
+select e.empno 사번, e.ename 사원이름, 
+	m.empno 매니저사번, m.ename 매니저이름
+from emp e join emp m on (e.mgr = m.empno);
+
+select e.empno 사번, e.ename 사원이름, 
+	m.empno 매니저사번, m.ename 매니저이름
+from emp e left join emp m on (e.mgr = m.empno);
