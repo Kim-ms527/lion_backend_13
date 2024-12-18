@@ -72,7 +72,7 @@ select empno, ename, dname ,sal from emp, dept where emp.deptno = dept.deptno;
 select empno, ename,emp.deptno, dname ,sal from emp, dept where emp.deptno = dept.deptno;
 
 -- 각 컬럼의 이름앞에 어떤 테이블의 컬럼인지를 명시적으로 쓰는게 좋다. 
-select e.empno, e.ename,e,deptno, d.dname ,e.sal from emp e, dept d where e.deptno = d.deptno;
+select e.empno, e.ename, e.deptno, d.dname ,e.sal from emp e, dept d where e.deptno = d.deptno;
 
 
 
