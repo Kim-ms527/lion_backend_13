@@ -148,3 +148,92 @@ from emp e join emp m on (e.mgr = m.empno);
 select e.empno 사번, e.ename 사원이름, 
 	m.empno 매니저사번, m.ename 매니저이름
 from emp e left join emp m on (e.mgr = m.empno);
+
+-- sub Query  
+-- 데이터를 얻어오는데, 질문(쿼리)하나로 답을 얻을 수 없는 경우. 
+-- 스미스 사원이 속한 부서의 평균 급여를 알고 싶어요. 
+
+-- 스미스사원의 부서번호
+select deptno from emp where ename = 'smith';
+select avg(sal) from emp 
+where deptno = 20;
+
+-- 쿼리 안에 또 다른 쿼리를 넣어서 사용함.
+select avg(sal) from emp 
+where deptno = (select deptno from emp where ename = 'smith');
+
+-- 서브쿼리 작성시 주의점. 
+-- 쿼리안에 넣어줄 쿼리가 잘 실행되는지 부터 테스트 
+select sal from emp where ename = 'scott';
+select ename from emp 
+where sal > (select sal from emp where ename = 'scott');
+
+
+SELECT MIN(ename) FROM emp;
+
+select avg(sal) from emp;
+select ename, sal from emp where sal < (select avg(sal) from emp); 
+
+SELECT MIN(ename)
+FROM emp GROUP BY deptno;
+-- multi-row Query
+SELECT ename, sal, deptno FROM emp
+WHERE ename in (SELECT MIN(ename)
+FROM emp GROUP BY deptno);
+
+SELECT ename, sal, deptno FROM emp
+WHERE ename in ('kang','CLARK','ADAMS','ALLEN');
+SELECT MIN(ename)
+FROM emp GROUP BY deptno;
+
+SELECT ename, sal, deptno FROM emp
+WHERE ename ='kang' or ename ='CLARK'or ename ='ADAMS'or ename ='ALLEN';
+
+-- in   = or  의 조합이다.  
+-- any ,  all  > < = ...   any = or     all == and  
+-- in, any, all  연산자가 있다.  
+
+SELECT ename, sal, deptno FROM emp
+WHERE ename >all (SELECT MIN(ename)
+FROM emp GROUP BY deptno);
+
+select avg(sal)from emp group by deptno;
+
+SELECT * FROM emp WHERE sal >ALL (select avg(sal)from emp group by deptno);
+
+SELECT * FROM emp WHERE sal >ANY(950, 3000, 1250);
+-- where sal > 950 or sal > 3000 or sal > 1250 
+
+SELECT * FROM emp WHERE sal >ALL(select avg(sal)from emp group by deptno);
+-- where sal > 950 and sal > 3000 and sal > 1250   
+
+-- 사원의 이름, 급여, 부서 번호를 출력하시오. 단 사원의 급여가 그 사원이 속한 부서
+-- 의 평균 급여보다 큰 경우만 출력하시오
+select * from emp;
+select ename, sal, deptno from emp o
+where sal > 
+(select avg(sal) from emp where deptno = o.deptno);
+
+
+SELECT deptno, empno, ename, sal
+FROM emp
+WHERE (deptno,sal) IN (SELECT deptno, max(sal)
+FROM emp GROUP BY deptno);
+
+SELECT deptno, max(sal)
+FROM emp GROUP BY deptno;
+
+SELECT e.deptno, e.empno, e.ename, e.sal
+FROM emp e,
+(SELECT s.deptno, max(s.sal) msal
+FROM emp s GROUP BY deptno) m
+WHERE e.deptno = m.deptno AND e.sal = m.msal;
+
+SELECT s.deptno, max(s.sal) msal
+FROM emp s GROUP BY deptno;
+
+
+SELECT deptno, empno, ename, sal
+FROM emp e
+WHERE e.sal = (SELECT max(sal)
+FROM emp WHERE deptno = e.deptno);
