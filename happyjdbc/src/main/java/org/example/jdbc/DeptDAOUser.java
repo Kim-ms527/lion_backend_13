@@ -6,14 +6,19 @@ public class DeptDAOUser {
 
         DeptDTO deptDTO = new DeptDTO();
         deptDTO.setDeptno(110);
-        deptDTO.setDname("test부서");
-        deptDTO.setLoc("판교");
+        deptDTO.setDname("lion");
+        deptDTO.setLoc("busan");
 
-        boolean result = deptDAO.addDept(deptDTO);
+//        boolean result = deptDAO.addDept(deptDTO);
+//
+//        if(result)
+//            System.out.println("성공!!");
+//        else
+//            System.out.println("실패!!");
 
-        if(result)
-            System.out.println("성공!!");
-        else
-            System.out.println("실패!!");
+//        System.out.println(deptDAO.updateDept(deptDTO) + "건 수정됨.");
+
+        deptDAO.deleteDept(110);
+
     }
 }

@@ -57,6 +57,16 @@ public class DeptDAO {
 
     //delete   -- d
     public void deleteDept(int deptno){
+        String sql = "delete from dept where deptno=?";
+        try(
+                Connection conn = DBUtil.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ){
+            ps.setInt(1,deptno);
+            ps.executeUpdate();
 
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
