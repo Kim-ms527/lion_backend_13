@@ -17,3 +17,13 @@ grant ALL privileges on scott.* to 'like'@'localhost';
 
 flush privileges;
 
+ SET GLOBAL time_zone = 'Asia/Seoul';
+ 
+  SELECT @@global.time_zone, @@session.time_zone;
+  
+create database likebank;
+
+grant ALL privileges on likebank.* to 'like'@'%';
+grant ALL privileges on likebank.* to 'like'@'localhost';
+
+flush privileges;
