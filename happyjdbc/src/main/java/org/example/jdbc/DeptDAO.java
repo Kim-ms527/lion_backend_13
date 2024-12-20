@@ -39,8 +39,20 @@ public class DeptDAO {
 
     //update    -- u
     public int updateDept(DeptDTO deptDTO){
+        int resultCount = 0;
+        String sql = "update dept set dname=? where deptno = ?";
+        try(
+                Connection conn = DBUtil.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ){
+            ps.setString(1, deptDTO.getDname());
+            ps.setInt(2, deptDTO.getDeptno());
 
-        return 0;
+            resultCount = ps.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultCount;
     }
 
     //delete   -- d
