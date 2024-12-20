@@ -28,4 +28,13 @@ public class DeptDTO {
     public void setLoc(String loc) {
         this.loc = loc;
     }
+
+    @Override
+    public String toString() {
+        return "DeptDTO{" +
+                "deptno=" + deptno +
+                ", dname='" + dname + '\'' +
+                ", loc='" + loc + '\'' +
+                '}';
+    }
 }

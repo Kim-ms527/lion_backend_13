@@ -1,5 +1,7 @@
 package org.example.jdbc;
 
+import java.util.List;
+
 public class DeptDAOUser {
     public static void main(String[] args) {
         DeptDAO deptDAO = new DeptDAO();
@@ -18,7 +20,15 @@ public class DeptDAOUser {
 
 //        System.out.println(deptDAO.updateDept(deptDTO) + "건 수정됨.");
 
-        deptDAO.deleteDept(110);
+//        deptDAO.deleteDept(110);
+//        DeptDTO resultDTO = deptDAO.getDept(40);
+//        System.out.println(resultDTO);
+
+
+        List<DeptDTO> list =  deptDAO.getDeptList();
+        for(DeptDTO dto : list){
+            System.out.println(dto);
+        }
 
     }
 }
