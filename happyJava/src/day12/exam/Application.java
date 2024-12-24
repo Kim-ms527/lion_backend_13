@@ -37,7 +37,7 @@ class UserInputHandler {
     public List<String> getUserInput() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         List<String> lines = new ArrayList<>();
-        System.out.println("Enter text (type 'exit' to finish):");
+        System.out.println("텍스트를 입력하세요 (종료하려면 'exit' 입력):");
 
         while (true) {
             String input = reader.readLine();
@@ -61,10 +61,10 @@ public class Application {
             fileManager.writeToFile(userInput);
 
             List<String> fileContent = fileManager.readFromFile();
-            System.out.println("Content of the file:");
+            System.out.println("파일의 내용:");
             fileContent.forEach(System.out::println);
         } catch (IOException e) {
-            System.err.println("An error occurred: " + e.getMessage());
+            System.err.println("오류가 발생했습니다: " + e.getMessage());
         }
     }
 }
