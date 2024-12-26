@@ -13,11 +13,11 @@ public class MyThread extends Thread{
 
         for(int i = 0; i < 10; i++){
             System.out.println(name+"Thread 안녕!!" + i);
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                sleep(1000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
         }
 
         System.out.println(name+"Thread 종료!!");

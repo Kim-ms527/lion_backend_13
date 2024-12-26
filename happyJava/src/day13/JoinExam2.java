@@ -41,8 +41,16 @@ public class JoinExam2 {
         task1.start();
         task2.start();
 
+        demonThread.setDaemon(true);
         demonThread.start();
 
+        try{
+            System.out.println("모든 작업의 완료를 기다립니다. ");
+            task1.join();
+            task2.join();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("모든 작업이 완료되었습니다.");
     }
