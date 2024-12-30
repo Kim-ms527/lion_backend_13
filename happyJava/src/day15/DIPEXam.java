@@ -1,20 +1,31 @@
 package day15;
+interface StorageService{
+    public void save(String data);
+}
 
-class FileStorage{
+
+class FileStorage implements StorageService{
     public void save(String data){
         System.out.println("데이터를 파일에 저장합니다. "+ data);
     }
 }
 
-class DataManager{
-    private FileStorage fileStorage;
+class DatabaseStorage implements  StorageService{
+    @Override
+    public void save(String data) {
+        System.out.println("데이터를 데이터 베이스에 저장 합니다. "+ data);
+    }
+}
 
-    public DataManager(){
-        this.fileStorage = new FileStorage();
+class DataManager{
+    private StorageService storageService;
+
+    public DataManager(StorageService storageService){
+        this.storageService = storageService;
     }
 
     public void saveData(String data){
-        fileStorage.save(data);
+        storageService.save(data);
     }
 }
 
