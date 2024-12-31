@@ -9,6 +9,7 @@ import java.util.List;
 //1)옵저버 인터페이스
 interface Observer{
     void update(String message);
+    String getName();
 }
 
 //2) Subject 인터페이스
@@ -20,7 +21,7 @@ interface  Subject{
     void removeObserver(Observer observer);
 
     // 관찰자에게 알림
-    void nitifyObservers();
+    void notifyObservers(String videoTitle);
 }
 
 //3) Subject를 구현하는 클래스
@@ -36,24 +37,25 @@ class YouTubeChannel implements Subject{
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
+        System.out.println(observer.getName() + " 님이 구독을 신청했습니다.");
     }
 
     @Override
     public void removeObserver(Observer observer) {
         observers.remove(observer);
+        System.out.println(observer.getName() + " 님이 구독을 취소했습니다.");
     }
 
     @Override
-    public void nitifyObservers() {
+    public void notifyObservers(String videoTitle) {
         for(Observer observer : observers){
-            System.out.println();
-            observer.update(channelName + ": 새로운 영상이 업로드 되었습니다. ");
+            observer.update(channelName + ": 새로운 영상 '" + videoTitle + "'이이 업로드 되었습니다. ");
         }
     }
 
     //영상 업로드
-    public void uploadVideo(){
-        nitifyObservers();
+    public void uploadVideo(String videoTitle){
+        notifyObservers( videoTitle);
     }
 }
 
@@ -67,6 +69,11 @@ class Subscriber implements Observer{
     @Override
     public void update(String message) {
         System.out.println(name + "님, 알림 :"+ message);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
 
@@ -91,13 +98,13 @@ public class ObserverDemo {
         channel.registerObserver(subscriber5);
 
         //새로운 영상 업로드
-        channel.uploadVideo();
+        channel.uploadVideo("싱글턴패턴");
 
         //구독취소
         channel.removeObserver(subscriber5);
 
         //새로운 영상 업로드
-        channel.uploadVideo();
+        channel.uploadVideo("옵저버패턴");
 
 
 
