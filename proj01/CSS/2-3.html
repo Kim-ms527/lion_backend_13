@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" >
-        <title>선택자의 종류</title>
-        <style type="text/css">
-            * { margin:0; padding:0; }
-            p { color:#F62727; }
-           .class-selector { font-size:100px; }
-           #type-selector { background-color:#ddd; }
-          </style>
-    </head>
-    <body>
-        <div id="type-selector">
-            <h1 class="class-selector">선택자란?</h1>
-            <p> 선택자는 CSS에서 HTML의 특정 요소를 선택하기 위한 규칙입니다.</p>
-        </div>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>선택자의 종류</title>
+    <style type="text/css">
+      /*  * 모든것을 의미하는 선택자는 권장되지는 않는다.  */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #pid {
+        color: yellow;
+      }
+
+      h1,
+      div,
+      /* p {
+        color: red;
+      } */
+      * {
+        color: aqua;
+      }
+      /* p {
+        color: #84dd78;
+      } */
+
+      .class-selector {
+        font-size: 100px;
+      }
+      .a {
+        color: blueviolet;
+      }
+
+      p {
+        color: red;
+      }
+
+      #type-selector {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- id 는 page에서 중복되지 않게 사용해야함. -->
+    <div id="type-selector">
+      <h1 class="class-selector a">선택자란?</h1>
+      <p class="a" id="pid">
+        선택자는 CSS에서 HTML의 특정 요소를 선택하기 위한 규칙입니다.
+      </p>
+      <p>안녕하세요.</p>
+    </div>
+    <footer class="a">test</footer>
+  </body>
 </html>

@@ -7,6 +7,12 @@
       a[title] {
         color: green;
       }
+      p[class] {
+        color: yellow;
+      }
+      li[id] {
+        color: red;
+      }
     </style>
   </head>
   <body>
@@ -15,10 +21,10 @@
         <li>
           List Item
           <ul>
-            <li>Child</li>
+            <li id="b">Child</li>
           </ul>
         </li>
-        <li>List Item</li>
+        <li id="a">List Item</li>
         <li>List Item</li>
         <li>List Item</li>
       </ul>
@@ -28,7 +34,7 @@
         <a href="#" title="Some title">consectetur</a> adipisicing elit, sed do
         eiusmod tempor.
       </p>
-      <p>
+      <p class="a">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor.
       </p>
@@ -36,7 +42,7 @@
         Lorem ipsum dolor sit amet, consectetur
         <a href="#">adipisicing</a> elit, sed do eiusmod tempor.
       </p>
-      <p>
+      <p class="b">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor.
       </p>
