@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script src="exam.js"></script> -->
+    <script>
+      //var, let, const
+      //var -- 자바스크립트 초기부터 사용하던 예약어.
+      //let, const  -- 나중에 추가된 예약어.
+      var name = "kang";
+      console.log(name);
+
+      //var - 1. 변수 스코프  : 함수단위  ES6 이후에는 지양하고 있다.
+      // 2. var 중복선언이 가능하다.
+      // 3. 호이스팅 된다.
+      console.log(varI);
+
+      varScopeTest();
+
+      var varI = 10;
+
+      var varI = 20;
+
+      console.log(varI);
+
+      function varScopeTest() {
+        if (true) {
+          var varScope = 10;
+        }
+        console.log(varScope);
+      }
+
+      //let(변수), const(상수)  : 스코프 - 블럭단위
+      letScopeTest();
+
+      //   console.log(letI);  //호이스팅 안됨.
+      let letI = 10;
+
+      //   let letI = 20;  //중복선언 안됨.
+
+      function letScopeTest() {
+        if (true) {
+          let letScope = 10;
+        }
+        // console.log(letscope);   //오류!!
+      }
+
+      letI = 20;
+      letI = 30;
+
+      const constI = 10;
+      constI = 20;
+    </script>
+  </body>
+</html>

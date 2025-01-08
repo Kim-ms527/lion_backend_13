@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const dog = {
+        name: "멍멍이",
+        sound: "멍멍!!",
+        say: function () {
+          console.log(this.sound);
+          console.log("dog 객체안에서의 ::  " + this);
+        },
+        //화살표 함수의 this 는 브라우저에서 Window 객체이다.  때문에
+        // 객체안에서 함수를 정의할 때에는 화살표함수를 사용하면 안된다!!!!  (중요!!)
+        say2: () => {
+          console.log("화살표 함수:::" + this);
+          console.log(this.sound);
+        },
+      };
+
+      dog.say();
+      dog.say2();
+
+      function test() {
+        console.log(this);
+      }
+
+      test();
+    </script>
+  </body>
+</html>
