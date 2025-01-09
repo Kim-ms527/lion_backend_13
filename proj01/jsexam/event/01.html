@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event1</title>
+    <!-- <style>
+      button {
+        color: aqua;
+      }
+    </style> -->
+  </head>
+  <body>
+    <button id="btn1">클릭</button>
+    <button id="btn2">클릭2</button>
+
+    <script>
+      //이벤트
+      //소스(대상).addEventListener(eventName, eventHandler, ToCapture)
+      //eventName  - click, drag,
+      //eventHandler - 이벤트가 발생되었을 때 할일.  함수로 전달
+      //toCapture - 기본값 false 생략가능.
+      const btn = document.querySelector("button");
+      //   console.log(btn);
+      const hi = () => {
+        alert("hello");
+      };
+      btn.addEventListener("click", hi);
+
+      const btn2 = document.querySelector("#btn2");
+      //   console.log(btn2);
+
+      btn2.addEventListener("click", () => {
+        alert("안녕!");
+      });
+
+      btn2.addEventListener("click", function () {
+        alert("안녕");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event3</title>
+  </head>
+  <body>
+    <!-- <button onclick="changeColor()">클릭</button> -->
+
+    <button>클릭</button>
+    <button id="hi_btn">안녕</button>
+    <div></div>
+
+    <script>
+      function changeColor() {
+        const color = prompt();
+        document.body.style.backgroundColor = color;
+      }
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", changeColor);
+
+      document.getElementById("hi_btn").addEventListener("click", () => {
+        const msg = prompt();
+        document.querySelector("div").innerHTML = msg;
+      });
+    </script>
+  </body>
+</html>

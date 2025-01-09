@@ -44,6 +44,6 @@ kim.admin?.();
 
 //?.[]
 
-console.log(kang["age"]);
+console.log(kang?.["age"]);
 const hong = {};
 console.log(hong?.["name"]);
