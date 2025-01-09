@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event4</title>
+  </head>
+  <body>
+    <script>
+      //화면이 클릭될때마다 배경색이 랜덤하게 바뀌게 하고 싶어요.
+      //흰트 document.body.style.backgroundColor = rgb(22,32,33);
+      //Math.floor(Math.ramdom()*256)
+      const makeColor = () => {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r},${g},${b})`;
+      };
+
+      function changeColor(event) {
+        //   const changeColor = (event) => {
+        //this -- 화살표함수와, function의 차이점.
+        // console.log(this);
+        console.log(event.target);
+        document.body.style.backgroundColor = makeColor();
+
+        //이벤트 삭제
+        document.removeEventListener("click", changeColor);
+      }
+
+      document.addEventListener("click", changeColor);
+
+      //   document.addEventListener("click", () => {
+
+      //     document.body.style.backgroundColor = "rgb(240, 32, 33)";
+      //     alert("안녕");
+      //   });
+
+      const removeTest = () => {
+        console.log("hello");
+      };
+      document.addEventListener("click", removeTest);
+
+      setTimeout(() => {
+        document.removeEventListener("click", removeTest);
+        console.log("이벤트가 삭제되었습니다.");
+      }, 3000);
+    </script>
+  </body>
+</html>

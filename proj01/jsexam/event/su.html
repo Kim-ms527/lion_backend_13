@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event8</title>
+  </head>
+  <body>
+    <form action="06.html" id="myform">
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name" /><br />
+      <label for="password">비밀번호</label>
+      <input type="text" name="password" id="password" /><br />
+      <label for="checkPassword">비밀번호 확인</label>
+      <input type="text" name="checkPassword" id="checkPassword" /><br />
+      <input type="submit" value="등록" />
+    </form>
+    <script>
+      const form = document.getElementById("myform");
+      const name_input = document.getElementById("name");
+      const password_input = document.getElementById("password");
+      const checkPassword_input = document.getElementById("checkPassword");
+
+      const checkValue = (e) => {
+        if (name_input.value.trim() === "") {
+          alert("이름을 입력하세요.");
+          name_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (name_input.value.trim() === "") {
+          alert("이름을 입력하세요.");
+          name_input.focus();
+          e.preventDefault();
+          return;
+        }
+        if (password_input.value.trim() === "") {
+          alert("비밀번호를 입력하세요. 입력하세요.");
+          password_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (checkPassword_input.value.trim() === "") {
+          alert("비밀번호 확인을 입력하세요. 입력하세요.");
+          checkPassword_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (password_input.value !== checkPassword_input.value) {
+          alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+          password_input.focus();
+          e.preventDefault();
+          return;
+        }
+        alert("모든 값이 정확합니다.");
+        // form.submit();
+      };
+      form.addEventListener("submit", checkValue);
+    </script>
+  </body>
+</html>

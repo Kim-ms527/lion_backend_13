@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event8</title>
+  </head>
+  <body>
+    <form action="06.html" id="myform">
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name" /><br />
+      <label for="password">비밀번호</label>
+      <input type="text" name="password" id="password" /><br />
+      <label for="checkPassword">비밀번호 확인</label>
+      <input type="text" name="checkPassword" id="checkPassword" /><br />
+      <input type="submit" value="등록" />
+    </form>
+
+    <script>
+      //  이름이 입력되지 않았다면...  이름을 입력하세요.라고 메시지를 출력!!
+
+      // 비밀번호가 입력되지 않았거나, 두개의 입력값이 다르다면 알맞은
+      // 메시지를 출력할 수 있도록 코드를 만들어 주세요.
+      //이벤트.  submit  -  이벤트 네임
+      //이벤트 객체가 가지고 있는 preventDefault()  메소드를 이용하면 기본 이벤트를 막아줌.
+      // input 에 들어있는 값은  input요소.value
+      // 요소.focus()  원하는 요소에 커서를 위치시켜줘요.
+      const form = document.getElementById("myform");
+      const name_input = document.getElementById("name");
+      const password_input = document.getElementById("password");
+      const checkPassword_input = document.getElementById("checkPassword");
+
+      console.log(form);
+      console.log(name_input);
+
+      const checkValue = (e) => {
+        // e.preventDefault();
+        //이름입력확인
+        if (name_input.value.trim() === "") {
+          alert("이름을 입력하세요.");
+          name_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (name_input.value.trim() === "") {
+          alert("이름을 입력하세요.");
+          name_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (password_input.value.trim() === "") {
+          alert("비밀번호를 입력하세요. 입력하세요.");
+          password_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (checkPassword_input.value.trim() === "") {
+          alert("비밀번호 확인을 입력하세요. 입력하세요.");
+          checkPassword_input.focus();
+          e.preventDefault();
+          return;
+        }
+
+        if (password_input.value.trim() !== checkPassword_input.value.trim()) {
+          alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+          password_input.focus();
+          e.preventDefault();
+          return;
+        }
+        alert("모든 값이 정확합니다.");
+        // form.submit();
+      };
+
+      form.addEventListener("submit", checkValue);
+    </script>
+  </body>
+</html>

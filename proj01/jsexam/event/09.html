@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <ul id="todoList">
+        <li>할일1</li>
+        <li>할일2</li>
+        <li>할일3</li>
+        <li>할일4</li>
+        <li>할일5</li>
+    </ul>
+
+    <label for="todo">할일을 입력하세요.</label>
+    <input type="text" name="todo" id="todo"> <button id="todo-input-btn">할일 입력</button>
+<br>
+<br>
+    <button id="exambtn">클릭</button>
+    <ul id="examList"></ul>
+
+    <script>
+        const todoList = document.getElementById('todoList');
+        //1. input에 값을 입력하고 버튼을 누르면 할일5 아래쪽에 입력된 값이 출력되게 해주세요.
+        document.getElementById('todo-input-btn').addEventListener('click',()=>{
+            const li = document.createElement("li");  //<li></li>
+            const msg = document.getElementById('todo').value;
+            const text = document.createTextNode(msg)  
+            li.appendChild(text); 
+            todoList.appendChild(li); 
+        })
+
+
+
+
+        //2. 각 할일 (li) 를 클릭하면 li 에 들어있는 text (ex)할일1) alert()에 출력되게 만들어주세요.
+        todoList.addEventListener('click',(e)=>{
+            alert(e.target.innerText);
+        })
+
+        //li에 직접 이벤트를 생성해준다면.. 
+        // const lis = document.getElementsByTagName('li');
+        // for(let i = 0; i < lis.length; i++){
+        //     lis[i].addEventListener('click',(e)=>{
+        //         alert(e.target.innerText);
+        //     })
+        // }
+       
+       
+       
+        document.getElementById('exambtn').addEventListener('click',()=>{
+            const ul = document.getElementById('examList');
+            const li = document.createElement("li");  //<li></li>
+            const text = document.createTextNode('test')  // test
+            li.appendChild(text);  //<li>test</li>
+            ul.appendChild(li); //<ul id="examList"><li>test</li></ul>
+        })
+    </script>
+</body>
+</html>

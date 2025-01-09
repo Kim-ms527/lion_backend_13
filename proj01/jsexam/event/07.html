@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="button-a">ButtonA</button>
+    <button id="button-b">ButtonB</button>
+
+    <h1>Button A - <span id="counter-a">0</span></h1>
+    <h1>Button B - <span id="counter-b">0</span></h1>
+
+    <script>
+      //  incrementFunc  함수에서 처리하도록 코드를 작성해 볼 수도 있을거예요.
+      function incrementFunc(e) {
+        console.log(this);
+        //   const incrementFunc = (e) => {
+        // console.log(this.id);   function() 으로 정의했을 경우. 이렇게도 가능
+        console.log(e.target);
+        console.log(counterA.innerHTML);
+        if (e.target.id == "button-a") {
+          counterA.innerHTML = Number(counterA.innerHTML) + 1;
+        } else {
+          counterB.innerHTML = Number(counterB.innerHTML) + 1;
+        }
+      }
+
+      const btnA = document.querySelector("#button-a");
+      const btnB = document.getElementById("button-b");
+      const counterA = document.getElementById("counter-a");
+      const counterB = document.getElementById("counter-b");
+
+      btnA.addEventListener("click", incrementFunc);
+      btnB.addEventListener("click", incrementFunc);
+
+      //   btnA.addEventListener("click", () => {
+      //     counterA.innerHTML = Number(counterA.innerHTML) + 1;
+      //   });
+
+      //   a()()();
+    </script>
+  </body>
+</html>
