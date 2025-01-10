@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MyButton from "./MyButton";
+import Hello from "./Hello";
 
 const Counter = () => {
   console.log("counter 컴포넌트 실행!! ");
@@ -25,6 +26,8 @@ const Counter = () => {
       <MyButton title="-" clickHandler={minusHandler} />
 
       <MyButton title="안녕" clickHandler={() => alert("안녕")}></MyButton>
+      <MyButton />
+      <Hello />
     </div>
   );
 };
