@@ -1,11 +1,4 @@
-import Counter from "./Counter";
-import Hello from "./Hello";
-import MyButton from "./MyButton";
-import MyInputBox from "./MyInputBox";
-import Welcome from "./Welcome";
-import ChildrenExam from "./component/propsChildren/ChildrenExam";
-import UseStateExam1 from "./component/useState/UseStateExam1";
-import UseStateExam2 from "./component/useState/UseStateExam2";
+import UseRefExam2 from "./component/useRef/UseRefEXam2";
 
 function App() {
   console.log("App 컴포넌트 실행!! ");
@@ -20,7 +13,12 @@ function App() {
 
       {/* <MyInputBox /> */}
       {/* <UseStateExam1 /> */}
-      <UseStateExam2 />
+      {/* <UseStateExam2 /> */}
+      {/* <TitlePriceInputBox /> */}
+      {/* <BoardList /> */}
+
+      {/* <SortedBoardList /> */}
+      <UseRefExam2 />
     </div>
   );
 }

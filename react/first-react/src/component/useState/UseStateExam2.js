@@ -6,7 +6,13 @@ const UseStateExam2 = () => {
   const inputChangeHandler = (e) => {
     setInput(e.target.value);
   };
-  const uploadHandler = () => {};
+  const uploadHandler = () => {
+    console.log(names);
+    console.log(...names);
+    console.log([input, names]);
+    // setNames();
+    setNames([input, ...names]);
+  };
 
   return (
     <div>
@@ -14,8 +20,8 @@ const UseStateExam2 = () => {
       <button onClick={uploadHandler}>입력</button>
 
       {/* 입력받은 값들을 리스트로 출력  */}
-      {names.map((name) => {
-        return <p>{name}</p>;
+      {names.map((name, index) => {
+        return <p key={index}>{name}</p>;
       })}
     </div>
   );
