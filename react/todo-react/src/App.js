@@ -1,5 +1,11 @@
+import TodoBox from "./TodoBox";
+
 function App() {
-  return <div>hello</div>;
+  return (
+    <div className="card">
+      <TodoBox />
+    </div>
+  );
 }
 
 export default App;
