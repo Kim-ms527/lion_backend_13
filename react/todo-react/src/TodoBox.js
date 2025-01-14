@@ -45,7 +45,11 @@ const TodoBox = () => {
   return (
     <div>
       <TodoInput addTodo={addTodoList} />
-      <TodoList todoList={todoList} />
+      <TodoList
+        todoList={todoList}
+        deleteHandler={deleteTodoList}
+        updateHandler={updateTodoList}
+      />
     </div>
   );
 };
