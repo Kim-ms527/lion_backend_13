@@ -1,17 +1,25 @@
 import { useState } from "react";
 
-const Todo = ({ todo, deleteHandler }) => {
+const Todo = ({ todo, deleteHandler, updateHandler }) => {
   // 수정폼, 수정
   const [updateMode, setUpdateMode] = useState(false);
+  const [title, setTitle] = useState(todo.title);
+
   const updateModeHandler = () => {
     setUpdateMode(true);
   };
-
+  const changeHandler = (e) => {
+    setTitle(e.target.value);
+  };
+  const updater = () => {
+    updateHandler({ id: todo.id, title: title });
+    setUpdateMode(false);
+  };
   if (updateMode) {
     return (
       <>
-        <input type="text" value="수정할 값" />
-        <button>수정</button>
+        <input type="text" value={title} onChange={changeHandler} />
+        <button onClick={updater}>수정</button>
       </>
     );
   } else {
