@@ -36,7 +36,13 @@ const UseEeffectExam = () => {
         update
       </button>
       <span>name :: {name} </span>
-      <input type="text" value={name} />
+      <input
+        type="text"
+        value={name}
+        onChange={() => {
+          setName(name);
+        }}
+      />
     </div>
   );
 };

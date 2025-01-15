@@ -1,7 +1,60 @@
+/* body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center; // 수평 중앙 정렬 
+  align-items: center; // 수직 중앙 정렬 
+  background-color: #f0f0f0;
+}
 .card {
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   width: 20rem;
+} */
+
+body {
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.grid-container {
+  display: grid; /* Grid 레이아웃 활성화 */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(20rem, 1fr)
+  ); /* 열 크기 설정 */
+  gap: 1rem; /* 카드 간격 */
+  justify-content: center; /* 카드들을 중앙으로 정렬 */
+  padding: 2rem;
+  overflow: visible; /* 그림자 효과가 잘리지 않도록 설정 */
+}
+
+.card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* 더 진한 그림자 */
+  padding: 1rem;
+  width: 20rem;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* 호버 시 그림자 강조 */
+}
+
+.main_input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* 테두리와 패딩 포함 */
+  margin-bottom: 20px;
+}
+
+li {
+  list-style-type: none;
 }

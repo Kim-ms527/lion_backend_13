@@ -1,13 +1,16 @@
-import TodoBox from "./TodoBox";
-import UseEeffectExam from "./component/useEffect/UseEeffectExam";
-import UseEffectCleanUp from "./component/useEffect/UseEffectCleanUp";
+import ImporovedNoteBox from "./component/ImporovedNote/ImprovedNoteBox";
+import NoteBox from "./component/note/NoteBox";
+import CheckedNoteBox from "./component/checkedNote/CheckdNoteBox";
 
 function App() {
   return (
-    <div className="card">
-      <TodoBox />
+    <div className="grid-container">
+      {/* <TodoBox className="card" /> */}
       {/* <UseEeffectExam /> */}
       {/* <UseEffectCleanUp /> */}
+      <NoteBox />
+      <CheckedNoteBox />
+      <ImporovedNoteBox />
     </div>
   );
 }
