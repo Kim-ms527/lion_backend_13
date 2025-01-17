@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: hellospring
+
+server:
+  port: 8080
+
