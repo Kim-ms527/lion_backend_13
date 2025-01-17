@@ -1,5 +1,10 @@
 package sample.bean;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+@Repository
 public class MyBean {
     private String name;
     private int count;
