@@ -7,9 +7,13 @@ public class Dice {
     }
 
 
-    public Dice(int face){
+//    public Dice(int face){
+//        this.face = face;
+//        System.out.println("Dice(int) 실행");
+//    }
+
+    public void setFace(int face) {
         this.face = face;
-        System.out.println("Dice(int) 실행");
     }
 
     public int getNumber(){

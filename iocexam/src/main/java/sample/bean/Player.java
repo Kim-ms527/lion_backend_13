@@ -13,9 +13,9 @@ public class Player {
 
     }
 
-    public Player(Dice dice) {
-        this.dice = dice;
-    }
+//    public Player(Dice dice) {
+//        this.dice = dice;
+//    }
 
     public void setDice(Dice dice) {
         this.dice = dice;

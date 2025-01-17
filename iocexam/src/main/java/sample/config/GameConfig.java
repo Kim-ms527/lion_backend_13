@@ -1,16 +1,21 @@
 package sample.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import sample.bean.Dice;
 import sample.bean.Game;
 import sample.bean.Player;
 
 import java.util.List;
-
+@PropertySource({"classpath:game.properties"})
 public class GameConfig {
     @Bean
-    public Dice dice(){
-        return new Dice(45);
+    public Dice dice(@Value("${face}") int face) {
+//        return new Dice(6);
+        Dice dice = new Dice();
+        dice.setFace(face);
+        return dice;
     }
 
     @Bean
