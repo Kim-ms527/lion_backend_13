@@ -16,11 +16,17 @@ public class UserConfig {
 
     @Bean
     public UserService userService(UserDao userDao){
-        return new UserServiceImpl(userDao);
+//        return new UserServiceImpl(userDao); //생성자를 통한 주입
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.setUserDao(userDao);
+        return userService;
     }
 
     @Bean
     public UserController userController(UserService userService){
-        return new UserController(userService);
+//        return new UserController(userService);
+        UserController userController = new UserController();
+        userController.setUserService(userService);
+        return userController;
     }
 }

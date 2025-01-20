@@ -6,7 +6,14 @@ import com.example.iocexam.repository.UserDao;
 public class UserServiceImpl implements UserService{
     private UserDao userDao;
 
+    public UserServiceImpl(){
+
+    }
     public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
 

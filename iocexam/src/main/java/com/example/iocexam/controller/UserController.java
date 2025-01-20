@@ -8,7 +8,17 @@ import com.example.iocexam.service.UserService;
 public class UserController {
     private UserService userService;
 
-    public UserController(UserService userService) {
+    public UserController(){
+
+    }
+
+
+//    public UserController(UserService userService) {
+//        this.userService = userService;
+//    }
+
+
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
