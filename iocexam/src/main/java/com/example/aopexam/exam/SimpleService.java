@@ -13,11 +13,19 @@ public class SimpleService {
     }
 
     public void hello(){
+
         System.out.println("hello()  run... ");
+//        if(1==1){
+//            throw new RuntimeException();
+//        }
+
     }
 
     public void setName(String name){
+
         System.out.println("setName() run");
+
+
     }
 
     public void getName(){
