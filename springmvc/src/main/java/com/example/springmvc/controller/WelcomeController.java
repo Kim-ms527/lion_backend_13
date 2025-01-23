@@ -41,7 +41,7 @@ public class WelcomeController {
 
     @GetMapping("/products2")
     public String showProducts(Model model) {
-        model.addAttribute("products", products);
+        model.addAttribute("productList", products);
         return "products2"; // 뷰의 이름을 반환
     }
 }

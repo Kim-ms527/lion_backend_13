@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>example</title>
+</head>
+<body>
+
+<!--변수 표현식-->
+<p>Username : <span th:text="${username}"></span></p>
+
+<!--선택 변수 표현식-->
+<div th:object="${languages}">
+    <p>
+        Languages : <span th:text="*{[0]}"></span>
+        <span th:text="*{[1]}"></span>
+        <span th:text="*{[2]}"></span>
+    </p>
+</div>
+
+<div th:object="${item}">
+    <p>
+        Item : <span th:text="*{name}"></span>
+        <span th:text="*{price}"></span>
+    </p>
+</div>
+
+<!--메시지 표현식 -->
+<p th:text="#{welcome.message}"></p>
+<p th:text="#{product.name}"></p>
+
+<!--링크표현식-->
+<a th:href="@{/home(name=${username})}">home</a>
+<br>
+<br>
+<a herf="/home?name=aaa">home</a>
+
+<!--리터럴 값-->
+<p th:text="'Welcome,'  + ${username}+'!!'"></p>
+
+<!--조건에 따라서 -->
+<div th:if="${isAdmin}">
+    <p><span th:text="${username}"></span>은 관리자 입니다.</p>
+</div>
+<div th:unless="${isAdmin}">
+    <p><span th:text="${username}"></span>은 관리자가 아닙니다.</p>
+</div>
+
+</body>
+</html>

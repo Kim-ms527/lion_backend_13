@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>user List</title>
+</head>
+<body>
+<h1>user List</h1>
+
+<table>
+  <thead>
+    <th>
+      <td>사용자 이름</td>
+      <td>관리자 여부</td>
+    </th>
+  </thead>
+  <tbody>
+    <tr th:each="user:${users}">
+      <td th:text="${user.name}"></td>
+      <td th:if="${user.admin}"   th:text="'Admin'"></td>
+      <td th:unless="${user.admin}"   th:text="'User'"></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

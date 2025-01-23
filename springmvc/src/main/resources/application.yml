@@ -2,6 +2,16 @@ spring:
   application:
     name: springmvc
 
+
+  messages:
+    basename: messages
+    encoding: UTF-8
+    cache-duration: 0
+
+
+
+
+
   devtools:
     restart:
       enabled: true

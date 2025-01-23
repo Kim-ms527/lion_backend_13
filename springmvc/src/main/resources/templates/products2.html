@@ -11,7 +11,7 @@
 <div>
   <ul>
     <li
-            th:each="product : ${products}"
+            th:each="product : ${productList}"
             th:text="${product.name} + ' - $' + ${product.price}"
     ></li>
   </ul>
