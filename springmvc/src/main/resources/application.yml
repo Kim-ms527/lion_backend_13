@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springmvc
+
+  devtools:
+    restart:
+      enabled: true
+      exclude: static/**,public/**
+
+  thymeleaf:
+    cache: false
+
