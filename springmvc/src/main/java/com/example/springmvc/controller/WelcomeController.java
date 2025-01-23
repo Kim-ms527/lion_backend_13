@@ -1,6 +1,7 @@
 package com.example.springmvc.controller;
 
 import com.example.springmvc.domain.Item;
+import com.example.springmvc.domain.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,5 +31,17 @@ public class WelcomeController {
         model.addAttribute("items", items);
 
         return "welcome";
+    }
+
+    private List<Product> products = new ArrayList<>(Arrays.asList(
+            new Product(1, "Apple", 1.20),
+            new Product(2, "Banana", 0.75),
+            new Product(3, "Cherry", 2.05)
+    ));
+
+    @GetMapping("/products2")
+    public String showProducts(Model model) {
+        model.addAttribute("products", products);
+        return "products2"; // 뷰의 이름을 반환
     }
 }
