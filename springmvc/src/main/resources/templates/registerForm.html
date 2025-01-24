@@ -16,5 +16,7 @@
     <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
     <button type="submit">Submit</button>
 </form>
+
+<p th:text="${msg}"></p>
 </body>
 </html>

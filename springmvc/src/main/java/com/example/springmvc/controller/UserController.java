@@ -15,6 +15,12 @@ import java.util.List;
 
 @Controller
 public class UserController {
+    @ModelAttribute
+    public void addAttributes(Model model){
+        System.out.println("@ModelAttribute 메소드 실행!!!! :::::::::");
+        model.addAttribute("msg","환영합니다^^");
+    }
+
     @GetMapping("/users")
     public String users(Model model) {
         List<User> users = Arrays.asList(
