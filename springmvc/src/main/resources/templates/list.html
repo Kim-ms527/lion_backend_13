@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List exam</title>
+</head>
+<body>
+    <h1>List Example</h1>
+
+    <ul>
+<!--th:each 를 사용할 때  두번 째 인자로 status 를 사용,   index값을 얻어올 수 있다. -->
+        <li th:each="item, status :${items}"
+            th:if="${status.index >= 3 and status.index < 9}"
+            th:text="${item}"></li>
+    </ul>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Time exam</title>
+</head>
+<body>
+<h1>Date Time example</h1>
+<p>
+    current Date : <span th:text="${currentDate}"></span>
+</p>
+<p>
+    current DateTime : <span th:text="${#temporals.format(currentDateTime,'yyyy-MM-dd HH:mm:ss')}"></span>
+</p>
+<p>
+    current Time : <span th:text="${currentTime}"></span>
+</p>
+<p>
+    current Zoned DateTime : <span th:text="${#temporals.format(currentZonedDateTime,'yyyy-MM-dd HH:mm:ss zzzz')}"></span>
+</p>
+
+<img src="aa.png">
+</body>
+</html>
