@@ -28,7 +28,7 @@ public class VisitController {
         //이 요청에서는 쿠키 이름과, 쿠키 값을 받아서 쿠키를 저장하는 부분을 만들어 주세요.
         Cookie cookie = new Cookie(cookieName, cookieValue);
         cookie.setPath("/");
-        cookie.setMaxAge(7*24*60*60);  //7일 유지
+        cookie.setMaxAge(-1);  //-1 브라우저가 유지되는 동안 //7일 유지(7*24*60*60)
 
         response.addCookie(cookie);  //응답에 쿠키 추가
         //쿠키가 저장되면 /cookieView로 리다이렉트되도록 만들어 주세요.

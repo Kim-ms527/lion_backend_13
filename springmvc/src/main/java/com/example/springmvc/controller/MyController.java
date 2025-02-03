@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,5 +46,13 @@ public class MyController {
         model.addAttribute("name",name);
         return "greeting";
     }
+
+    @GetMapping("/users/{userId}") //http://localhost:8080/users/carami   -- {userId} 는 값이들어올거다라는 의미.
+    public String getUser(@PathVariable("userId") String userId, Model model){
+        System.out.println(userId);
+        model.addAttribute("userId",userId);
+        return "userView";
+    }
+
 
 }
