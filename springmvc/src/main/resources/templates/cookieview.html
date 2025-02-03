@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>쿠키 목록</title>
+</head>
+<body>
+<h1>쿠키 목록 </h1>
+<ul>
+    <li  th:each="cookie : ${cookies}">
+        <span th:text="${cookie}"></span>
+        <a th:href="@{/cookeDelete(cookieName=${#strings.substringBefore(cookie, '=')})}">쿠키삭제</a>
+    </li>
+</ul>
+<br>
+<a href="/cookieSetForm">쿠키설정하러가기</a>
+</body>
+</html>

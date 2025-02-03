@@ -40,7 +40,7 @@ public class UserController {
         return "registerForm";
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public String register(@Valid @ModelAttribute("user") User user, BindingResult result){
         if(result.hasErrors())
             return "registerForm";

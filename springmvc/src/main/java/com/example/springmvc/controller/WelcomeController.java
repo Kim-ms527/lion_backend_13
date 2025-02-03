@@ -21,6 +21,8 @@ public class WelcomeController {
                 new Item("orange",0.44)
         );
 
+
+
 //        List<Item> itemList = new ArrayList<>();
 //        itemList.add(new Item("사과",1.24));
 //        itemList.add(new Item("banana", 0.77));
@@ -44,4 +46,10 @@ public class WelcomeController {
         model.addAttribute("productList", products);
         return "products2"; // 뷰의 이름을 반환
     }
+    @GetMapping("/products3")
+    public String showProducts3(Model model) {
+        model.addAttribute("productList", products);
+        return "products2"; // 뷰의 이름을 반환
+    }
+
 }
