@@ -10,13 +10,7 @@ spring:
 
 
 
-
-
-  devtools:
-    restart:
-      enabled: true
-      exclude: static/**,public/**
-
-  thymeleaf:
-    cache: false
-
+server:
+  error:
+    whitelabel:
+      enabled: false
