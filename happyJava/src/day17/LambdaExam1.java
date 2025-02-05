@@ -32,5 +32,7 @@ public class LambdaExam1 {
 
         System.out.println(nameList);
 
+        nameList.sort(String::compareTo);
+
     }
 }
