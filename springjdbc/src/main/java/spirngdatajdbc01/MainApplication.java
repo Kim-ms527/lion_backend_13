@@ -5,6 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 @SpringBootApplication
 public class MainApplication   {
@@ -22,7 +26,7 @@ public class MainApplication   {
     }
 
     @Bean
-    public CommandLineRunner demo(UserRepository userRepository){
+    public CommandLineRunner demo(UserRepository userRepository, JdbcTemplate jdbcTemplate){
 //        return new CommandLineRunner() {
 //            @Override
 //            public void run(String... args) throws Exception {
@@ -41,6 +45,8 @@ public class MainApplication   {
             System.out.println(userRepository.count());
 
             userRepository.findAll().forEach(System.out::println);
+
+          
         };
     }
 
