@@ -10,6 +10,16 @@ public class LambdaCheckAll {
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(2, 4, 6, 8, 10);
         // 람다식을 사용하여 모든 요소 검사
+        Predicate<Integer> isEven = n -> n % 2 == 0;
+        boolean allEven = true;
 
+        for (Integer number : numbers) {
+            if (!isEven.test(number)) {
+                allEven = false;
+                break;
+            }
+        }
+
+        System.out.println("모든 숫자가 짝수입니까? " + allEven);
     }
 }

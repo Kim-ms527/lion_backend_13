@@ -10,6 +10,13 @@ public class LambdaFindElement {
     public static void main(String[] args) {
         List<String> words = Arrays.asList("Apple", "Banana", "Cherry", "Date", "Fig");
         // 람다식을 사용하여 조건 검사
+        Predicate<String> condition = s -> s.length() >= 5;
 
+        for (String word : words) {
+            if (condition.test(word)) {
+                System.out.println("첫 번째 길이가 5 이상인 단어: " + word);
+                break; // 첫 번째 매칭되는 요소를 찾으면 중단
+            }
+        }
     }
 }

@@ -12,8 +12,11 @@ public class LambdaTransformList {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> squaredNumbers = new ArrayList<>();
         // 람다식을 사용하여 각 요소를 변환
+        Function<Integer, Integer> squareFunction = n -> n * n;
 
-
+        for (Integer number : numbers) {
+            squaredNumbers.add(squareFunction.apply(number));
+        }
 
         System.out.println("제곱된 숫자 리스트: " + squaredNumbers);
     }
