@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -46,7 +48,19 @@ public class MainApplication   {
 
             userRepository.findAll().forEach(System.out::println);
 
-          
+           List<User> users = jdbcTemplate.query("select * from users",new BeanPropertyRowMapper<>(User.class));
+
+           users.stream().forEach(System.out::println);
+
+            System.out.println("========================");
+           userRepository.findByName("carami222").stream()
+                   .forEach(System.out::println);
+
+            System.out.println("++++++++++++++++++++++++++++");
+            PageRequest pageRequest = PageRequest.of(1,5);
+           Page<User> pageUsers = userRepository.findAllUsersWithPagination(pageRequest);
+
+           pageUsers.forEach(System.out::println);
         };
     }
 
