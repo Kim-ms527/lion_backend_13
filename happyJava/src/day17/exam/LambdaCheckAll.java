@@ -19,7 +19,10 @@ public class LambdaCheckAll {
                 break;
             }
         }
-
         System.out.println("모든 숫자가 짝수입니까? " + allEven);
+
+        //스트림 이용
+        boolean allEvenStream = numbers.stream().allMatch(n -> n % 2 == 0);
+        System.out.println(allEvenStream);
     }
 }
