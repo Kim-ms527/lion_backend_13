@@ -7,9 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -42,25 +46,57 @@ public class MainApplication   {
 
 //            userRepository.save(new User("carami2","carami@gmail.com"));
 
-                User findUser = userRepository.findById(9L).get();
-            System.out.println(findUser);
-            System.out.println(userRepository.count());
+//                User findUser = userRepository.findById(9L).get();
+//            System.out.println(findUser);
+//            System.out.println(userRepository.count());
+//
+//            userRepository.findAll().forEach(System.out::println);
+//
+//           List<User> users = jdbcTemplate.query("select * from users",new BeanPropertyRowMapper<>(User.class));
+//
+//           users.stream().forEach(System.out::println);
+//
+//            System.out.println("========================");
+//           userRepository.findByName("carami222").stream()
+//                   .forEach(System.out::println);
+//
+//            System.out.println("++++++++++++++++++++++++++++");
+//            PageRequest pageRequest = PageRequest.of(1,5);
+//           Page<User> pageUsers = userRepository.findAllUsersWithPagination(pageRequest);
+//
+//           pageUsers.forEach(System.out::println);
+//
 
-            userRepository.findAll().forEach(System.out::println);
+        };
 
-           List<User> users = jdbcTemplate.query("select * from users",new BeanPropertyRowMapper<>(User.class));
+    }
 
-           users.stream().forEach(System.out::println);
+    @Bean
+    public CommandLineRunner batchUpdateDemo(JdbcTemplate jdbcTemplate){
+        return args -> {
+          List<User> users = Arrays.asList(
+            new User("kang","kang@exam.com"),
+                  new User("kim","kim@exam.com"),
+                  new User("hong","hong@exam.com"),
+                  new User("lee","lee@exam.com"),
+                  new User("aaa","aaa@exam.com")
+          );
 
-            System.out.println("========================");
-           userRepository.findByName("carami222").stream()
-                   .forEach(System.out::println);
+          //여러건을 한번에 입력하는 작업을 수행.
+            String sql = "INSERT INTO users(name,email) VALUES(?,?)";
+            jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
+                @Override
+                public void setValues(PreparedStatement ps, int i) throws SQLException {
+                    User user = users.get(i);
+                    ps.setString(1, user.getName());
+                    ps.setString(2,user.getEmail());
+                }
 
-            System.out.println("++++++++++++++++++++++++++++");
-            PageRequest pageRequest = PageRequest.of(1,5);
-           Page<User> pageUsers = userRepository.findAllUsersWithPagination(pageRequest);
-
-           pageUsers.forEach(System.out::println);
+                @Override
+                public int getBatchSize() {
+                    return users.size();
+                }
+            });
         };
     }
 
