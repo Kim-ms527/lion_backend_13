@@ -13,7 +13,7 @@ public class FriendappApplication {
 		SpringApplication.run(FriendappApplication.class, args);
 	}
 
-	@Bean
+//	@Bean
 	public CommandLineRunner run(FriendRepository repository){
 		return args -> {
 			repository.findAll().forEach(System.out::println);

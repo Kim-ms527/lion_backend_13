@@ -32,4 +32,13 @@ public class FriendService {
         //id값이 이미 존재하고 있다라면..  수정해주고(update 쿼리자동생성),  id가 없다면(insert쿼리) 생성해준다.
         return friendRepository.save(friend);
     }
+    @Transactional(readOnly = true)
+    public Friend findFriendById(Long id){
+        return friendRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public void deleteFriendById(Long id){
+        friendRepository.deleteById(id);
+    }
 }

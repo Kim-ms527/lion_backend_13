@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/friends")
@@ -34,9 +31,30 @@ public class FriendController {
         return "redirect:/friends/list";
     }
 
+    @GetMapping("/edit/{id}")
+    public String updateForm(@PathVariable("id")Long id, Model model){
+        model.addAttribute("friend", friendService.findFriendById(id));
+        return "friends/edit";
+    }
+
+    @PostMapping("/edit")
+    public String update(@ModelAttribute Friend friend){
+        friendService.updateFriend(friend);
+        return "redirect:/friends/list";
+    }
+
+
     @GetMapping("/{id}")
-    public String detailFriend(){
+    public String detailFriend(@PathVariable(name = "id")Long id, Model model){
+        //서비스에게 부탁해서 id에 해당하는 친구정보를 얻어와야함.
+        model.addAttribute("friend",friendService.findFriendById(id));
         return "friends/detail";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id){
+        friendService.deleteFriendById(id);
+        return "redirect:/friends/list";
     }
 
 }
