@@ -8,7 +8,7 @@
 <body>
   <h1>친구 목록</h1>
 
-  <table>
+  <table th:if="${!friends.empty}">
     <thead>
       <tr>
         <th>아이디</th>
@@ -27,7 +27,13 @@
     </tr>
     </tbody>
   </table>
-
+<div th:if="${friends.totalPages > 1}">
+  <ul>
+    <li th:each="i:${#numbers.sequence(1, friends.totalPages)}">
+      <a th:href="@{/friends/list(page=${i})}" th:text=${i}></a>
+    </li>
+  </ul>
+</div>
 <a th:href="@{/friends/add}">친구등록</a>
 </body>
 </html>

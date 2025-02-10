@@ -3,6 +3,10 @@ package com.example.friendapp.service;
 import com.example.friendapp.domain.Friend;
 import com.example.friendapp.repository.FriendRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +18,14 @@ public class FriendService {
     @Transactional(readOnly = true)
     public Iterable<Friend> findAllFriend(){
         return friendRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Friend> findAllFriend(Pageable pageable){
+        Pageable pageable2 =  PageRequest.of(pageable.getPageNumber(),
+                pageable.getPageSize(), Sort.by(Sort.Direction.ASC,"id"));
+
+        return friendRepository.findAll(pageable2);
     }
 
     public Friend addFriend(Friend friend){
