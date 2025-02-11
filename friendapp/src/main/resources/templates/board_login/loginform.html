@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        text-align: center;
+    }
+    .login-container {
+        width: 300px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+    }
+    label, input {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    input[type="submit"] {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .error-message {
+        color: red;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Login</h2>
+
+  <!-- 오류 메시지 표시 -->
+  <div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+  </div>
+
+  <form th:action="@{/auth/login}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <input type="submit" value="Login" />
+  </form>
+</div>
+
+</body>
+</html>

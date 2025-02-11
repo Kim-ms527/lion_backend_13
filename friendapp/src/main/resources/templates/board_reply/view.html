@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board Details</title>
+    <style>
+        body {
+          font-family: "Arial", sans-serif;
+          margin: 40px;
+        }
+        .board-details {
+          border: 1px solid #ddd;
+          padding: 20px;
+          border-radius: 8px;
+          background-color: #f9f9f9;
+        }
+        .board-details h2 {
+          color: #333;
+        }
+        .details {
+          margin-bottom: 10px;
+        }
+        .link {
+          margin-right: 10px;
+        }
+        .content {
+          white-space: pre-wrap; /* Maintains whitespace formatting */
+        }
+    </style>
+</head>
+<body>
+<div class="board-details">
+    <h2 th:text="${board.title}">Title</h2>
+    <div class="details">
+        <strong>Name:</strong> <span th:text="${board.name}">Name</span>
+    </div>
+    <div class="details content">
+        <strong>Content:</strong>
+        <span th:text="${board.content}">Content</span>
+    </div>
+    <div class="details">
+        <strong>Created At:</strong>
+        <span
+                th:text="${#temporals.format(board.createdAt, 'yyyy/MM/dd HH:mm')}"
+        >Created Date</span
+        >
+    </div>
+
+    <div th:if="${errorMessage}" style="color: red; font-weight: bold;">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <!-- Update the List link to include the current page -->
+    <a th:href="@{/boards(page=${currentPage})}" class="link">List</a>
+    <a
+            th:href="@{/boards/updateform(id=${board.id}, page=${currentPage})}"
+            class="link"
+    >Edit</a
+    >
+    <a
+            th:href="@{/boards/deleteform(id=${board.id}, page=${currentPage})}"
+            class="link"
+    >Delete</a
+    >
+
+<h3>comments</h3>
+
+    <!-- 댓글 리스트 -->
+    <ul>
+        <li th:each="comment : ${comments}">
+            <span th:text="${comment.author}"></span> :
+            <span th:text="${comment.content}"></span>
+            <form th:action="@{/comments/delete}" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${comment.id}" />
+                <input type="hidden" name="board_id" th:value="${board.id}" />
+                <input type="password" name="password" placeholder="삭제하려면 비밀번호를 입력하세요." required />
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+    <!-- 오류 메시지 출력 -->
+    <div th:if="${replyErrorMessage}" style="color: red;">
+        <p th:text="${replyErrorMessage}"></p>
+    </div>
+
+    <!-- 댓글 입력 폼 -->
+    <form th:action="@{/comments/add}" method="post">
+        <input type="hidden" name="boardId" th:value="${board.id}" />
+        <input type="text" name="author" placeholder="이름을 입력하세요." required />
+        <input name="content" placeholder="댓글을 입력하세요." required />
+        <input type="password" name="password" placeholder="비밀번호를 입력하세요." required />
+        <button type="submit">Submit</button>
+    </form>
+
+
+</div>
+</body>
+</html>
