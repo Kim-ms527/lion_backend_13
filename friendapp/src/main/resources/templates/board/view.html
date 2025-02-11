@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board Details</title>
+    <style>
+        body {
+          font-family: "Arial", sans-serif;
+          margin: 40px;
+        }
+        .board-details {
+          border: 1px solid #ddd;
+          padding: 20px;
+          border-radius: 8px;
+          background-color: #f9f9f9;
+        }
+        .board-details h2 {
+          color: #333;
+        }
+        .details {
+          margin-bottom: 10px;
+        }
+        .link {
+          margin-right: 10px;
+        }
+        .content {
+          white-space: pre-wrap; /* Maintains whitespace formatting */
+        }
+    </style>
+</head>
+<body>
+<div class="board-details">
+    <h2 th:text="${board.title}">Title</h2>
+    <div class="details">
+        <strong>Name:</strong> <span th:text="${board.name}">Name</span>
+    </div>
+    <div class="details content">
+        <strong>Content:</strong>
+        <span th:text="${board.content}">Content</span>
+    </div>
+    <div class="details">
+        <strong>Created At:</strong>
+        <span
+                th:text="${#temporals.format(board.createdAt, 'yyyy/MM/dd HH:mm')}"
+        >Created Date</span
+        >
+    </div>
+
+    <div th:if="${errorMessage}" style="color: red; font-weight: bold;">
+        <p th:text="${errorMessage}"></p>
+    </div>
+    <!-- Update the List link to include the current page -->
+    <a th:href="@{/boards(page=${currentPage})}" class="link">List</a>
+    <a
+            th:href="@{/boards/updateform(id=${board.id}, page=${currentPage})}"
+            class="link"
+    >Edit</a
+    >
+    <a
+            th:href="@{/boards/deleteform(id=${board.id}, page=${currentPage})}"
+            class="link"
+    >Delete</a
+    >
+</div>
+</body>
+</html>
