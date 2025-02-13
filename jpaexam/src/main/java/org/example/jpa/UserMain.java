@@ -40,11 +40,13 @@ public class UserMain {
 //        User delUser = userDAO.findUser(4L);
 //        userDAO.deleteUser(delUser);
 
+
         //createuser
-        User kangUser = new User("kang","kang@exam.com");
+        User kangUser = new User("kang3","kang3@exam.com");
 
         userDAO.createUser(kangUser);
 
+        userDAO.findUser(5L);
 
 
 
