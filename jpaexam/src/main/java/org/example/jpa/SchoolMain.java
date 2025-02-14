@@ -10,9 +10,9 @@ public class SchoolMain {
     private static final Logger log = LoggerFactory.getLogger(School.class);
     private static void find(){
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
-        entityManager.getTransaction().begin();
+//        entityManager.getTransaction().begin();
         try{
-            School school = entityManager.find(School.class,1L);
+            School school = entityManager.find(School.class, 5L);
 
             log.info("School Name : {}",school.getName());
 
@@ -43,8 +43,35 @@ public class SchoolMain {
             em.close();
         }
     }
+    private static void update(){
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        em.getTransaction().begin();
+        try{
+            School school = em.find(School.class, 4L);
+            school.setName("likeLion");
+
+            em.getTransaction().commit();
+        }finally {
+            em.close();
+        }
+    }
+    private static void delete(){
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        em.getTransaction().begin();
+        try{
+            School school = em.find(School.class, 5L);
+            em.remove(school);
+
+            em.getTransaction().commit();
+
+        }finally {
+            em.close();
+        }
+    }
     public static void main(String[] args) {
 //        find();
-        create();
+//        create();
+//        update();
+        delete();
     }
 }

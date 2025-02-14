@@ -20,7 +20,7 @@ public class School {   //연관관계의 비소유자.
     private String name;
 
 
-    @OneToMany(mappedBy = "school")
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
     public School(String name) {
