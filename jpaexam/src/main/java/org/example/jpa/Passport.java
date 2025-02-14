@@ -15,7 +15,7 @@ public class Passport {
     @Column(name = "passport_number",nullable = false)
     private String passportNumber;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "person_id",unique = true)
     private Person person;
 
