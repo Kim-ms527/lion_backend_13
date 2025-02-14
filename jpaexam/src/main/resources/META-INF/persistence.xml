@@ -11,8 +11,10 @@
 <!--        <class>org.example.jpa.Student</class>-->
 <!--        <class>org.example.jpa.Author</class>-->
 <!--        <class>org.example.jpa.Book</class>-->
-        <class>org.example.jpa.Employee</class>
-        <class>org.example.jpa.Project</class>
+<!--        <class>org.example.jpa.Employee</class>-->
+<!--        <class>org.example.jpa.Project</class>-->
+        <class>org.example.jpa.Person</class>
+        <class>org.example.jpa.Passport</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpadb"/>

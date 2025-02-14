@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BookMain {
     public static void main(String[] args) {
 //        find();
-        create();
+//        create();
 //        update();
 //        delete();
 

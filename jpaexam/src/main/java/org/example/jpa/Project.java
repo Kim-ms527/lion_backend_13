@@ -19,4 +19,13 @@ public class Project {
 
     @ManyToMany(mappedBy = "projects")
     private Set<Employee> employees = new HashSet<>();
+
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "title='" + title + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
