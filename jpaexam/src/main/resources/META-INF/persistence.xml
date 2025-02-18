@@ -13,8 +13,14 @@
 <!--        <class>org.example.jpa.Book</class>-->
 <!--        <class>org.example.jpa.Employee</class>-->
 <!--        <class>org.example.jpa.Project</class>-->
-        <class>org.example.jpa.Person</class>
-        <class>org.example.jpa.Passport</class>
+<!--        <class>org.example.jpa.Person</class>-->
+<!--        <class>org.example.jpa.Passport</class>-->
+<!--        <class>org.example.jpa.Car3</class>-->
+<!--        <class>org.example.jpa.Truck3</class>-->
+<!--        <class>org.example.jpa.Company</class>-->
+<!--        <class>org.example.jpa.Customer</class>-->
+        <class>org.example.jpa.Phone</class>
+        <class>org.example.jpa.Laptop</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpadb"/>
