@@ -19,7 +19,7 @@ public class Customer {
     private String email;
     private int age;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
     private List<Order> orders;
 
     public Customer(String name, String email) {
