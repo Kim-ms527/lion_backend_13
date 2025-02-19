@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: springdatajpa
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/jpadb
+    username: chill
+    password: chill
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
