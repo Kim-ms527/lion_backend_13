@@ -54,4 +54,15 @@ public class Employee {
 //    @OneToMany(mappedBy = "employee")
 //    private Set<JobHistory> jobHistories;
 
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
 }
