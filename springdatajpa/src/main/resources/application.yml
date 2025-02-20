@@ -3,13 +3,13 @@ spring:
     name: springdatajpa
 
   datasource:
-    url: jdbc:mysql://localhost:3306/jpadb
-    username: chill
-    password: chill
+    url: jdbc:mysql://localhost:3306/hr
+    username: root
+    password: root1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:

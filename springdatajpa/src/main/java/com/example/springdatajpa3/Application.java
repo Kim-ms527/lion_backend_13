@@ -25,8 +25,7 @@ public class Application implements CommandLineRunner {
 //        userRepository.findUsersByName("k")
 //                .forEach(user -> log.info("user :: "+user.getName()));
 
-        userRepository.findusersDynamically(null,
-                        null)
+        userRepository.findusersDynamically("carami","carami@exam.com")
                 .forEach(user -> log.info("user :: {} {} ",user.getName(),user.getEmail()));
 
     }
