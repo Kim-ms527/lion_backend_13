@@ -1,5 +1,8 @@
 package com.example.restexam.controller;
 
+import com.example.restexam.domain.User;
+import com.example.restexam.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class ExampleController {
+    private final  UserService userService;
 
     @GetMapping("/example")
     public ResponseEntity<String> getExample(){
@@ -19,9 +24,9 @@ public class ExampleController {
                 .body("Hello!!");
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping(value = "/user/{id}"/*, produces = "application/json"*/)
     public ResponseEntity<User> getUserById(@PathVariable("id")Long id){
-        User user = /*new User(id,"carami","010-111-1111","강남구 역삼동")*/ null;
+        User user =  userService.findById(id);
 
         if(user == null){
             return ResponseEntity.notFound().build();
