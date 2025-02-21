@@ -1,0 +1,13 @@
+### POST
+POST http://localhost/api/example
+Content-Type: application/json
+
+{
+  "name": "pen2",
+  "price": 2.22
+}
+
+
+### GET 요청
+GET http://localhost/api/example
+Accept: application/json

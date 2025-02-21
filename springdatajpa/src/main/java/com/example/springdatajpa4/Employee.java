@@ -43,16 +43,16 @@ public class Employee {
     @JoinColumn(name = "manager_id"/*,foreignKey = @ForeignKey(name = "FK_employee_manager"), nullable = true*/)
     private Employee manager;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
     private Department department;
 
 
-//    @OneToMany(mappedBy = "manager")
-//    private Set<Employee> subordinates;
-//
-//    @OneToMany(mappedBy = "employee")
-//    private Set<JobHistory> jobHistories;
+    @OneToMany(mappedBy = "manager")
+    private Set<Employee> subordinates;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<JobHistory> jobHistories;
 
 
     @Override

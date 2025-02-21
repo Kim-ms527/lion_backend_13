@@ -1,16 +1,13 @@
 spring:
   application:
-    name: springdatajpa
+    name: restexam
 
   datasource:
     url: jdbc:mysql://localhost:3306/jpadb
-    username: root
-    password: root1234
+    username: chill
+    password: chill
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+      show-sql: true

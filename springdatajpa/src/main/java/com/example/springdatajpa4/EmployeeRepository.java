@@ -19,8 +19,10 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     List<Employee> findByDepartmentIdIn(List<Integer> departmentIds);
 
-    @Query("SELECT e FROM Employee e JOIN FETCH e.department d WHERE d.id IN :departmentIds AND e.salary BETWEEN :minSalary AND :maxSalary")
-    List<Employee> findByDepartmentIdInAndSalaryBetween(@Param("departmentIds") List<Integer> departmentIds, @Param("minSalary") Double minSalary, @Param("maxSalary")Double maxSalary);
+
+    @Query("SELECT e FROM Employee e LEFT JOIN FETCH e.department WHERE e.salary BETWEEN :minSalary AND :maxSalary")
+    List<Employee> findBySalaryBetween(Double minSalary, Double maxSalary);
+
 
     List<Employee> findByManagerIdIsNull();
 
@@ -29,4 +31,10 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     List<Employee> findByCommissionPctNotNullOrderBySalaryDescCommissionPctDesc();
 
     List<Employee> findByLastNameStartingWith(String prefix);
+
+
+
+//    @Query("SELECT e FROM Employee e JOIN FETCH e.department d WHERE d.id IN :departmentIds AND e.salary BETWEEN :minSalary AND :maxSalary")
+    List<Employee> findByDepartmentIdInAndSalaryBetween(@Param("departmentIds") List<Integer> departmentIds, @Param("minSalary") Double minSalary, @Param("maxSalary")Double maxSalary);
+
 }

@@ -29,4 +29,9 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
     @Query("SELECT c FROM Customer c WHERE c.age > (SELECT avg(c2.age) FROM Customer c2)")
     List<Customer> findCustomersOlderThanAverage();
 
+
+
+    @Query("SELECT c FROM Customer c JOIN FETCH c.orders")
+    List<Customer> findAllCustomersWithOrders();
+
 }
