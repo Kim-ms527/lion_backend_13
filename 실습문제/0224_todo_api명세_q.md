@@ -1,7 +1,7 @@
 ### ✅ **Spring Boot `TodoController` 작성 가이드 (API 명세서)**  
 
 ## 📌 **1. API 명세서 (`TodoController`)**
-**기본 URL**: `http://localhost/api/todos`  
+**기본 URL**: `http://localhost:8080/api/todos`  
 
 | 기능        | HTTP 메서드 | URL                     | 요청 데이터 (JSON) | 응답 데이터 (JSON) |
 |------------|------------|-------------------------|--------------------|--------------------|
