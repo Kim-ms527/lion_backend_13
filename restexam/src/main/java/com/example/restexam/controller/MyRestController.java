@@ -26,9 +26,9 @@ public class MyRestController {
         return new User(name,"010-111-1111");
     }
 
-    @GetMapping("/api/users")
-    public List<User> getUsers(){
-
-        return null;
-    }
+//    @GetMapping("/api/users")
+//    public List<User> getUsers(){
+//
+//        return null;
+//    }
 }
