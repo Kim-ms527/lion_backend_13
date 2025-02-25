@@ -2,7 +2,7 @@
 
 ---
 
-## **✅ 1. API 명세 **
+## ** 1. API 명세 **
 | 메서드 | 엔드포인트          | 요청 데이터      | 응답 데이터   | 설명 |
 |--------|------------------|--------------|-------------|------|
 | `POST` | `/api/events`   | `Event` JSON | `Event` JSON | 새 이벤트 추가 |
@@ -13,8 +13,19 @@
 
 ---
 
-## **✅ 2. `curl` 명령어**
-### **📌 1️⃣ 이벤트 추가 (`POST /api/events`)**
+
+```java
+public class Event {
+    private long id;
+    private String title;
+    private String description;
+}
+```
+
+---
+
+## ** 2. `curl` 명령어**
+### **이벤트 추가 (`POST /api/events`)**
 ```sh
 curl -X POST "http://localhost:8080/api/events" \
      -H "Content-Type: application/json" \
@@ -23,7 +34,7 @@ curl -X POST "http://localhost:8080/api/events" \
           "description": "Learn Spring Boot with hands-on exercises."
          }'
 ```
-📌 **응답 예시 (201 Created)**
+ **응답 예시 (201 Created)**
 ```json
 {
     "id": 1,
@@ -34,11 +45,11 @@ curl -X POST "http://localhost:8080/api/events" \
 
 ---
 
-### **📌 2️⃣ 모든 이벤트 조회 (`GET /api/events`)**
+### **  모든 이벤트 조회 (`GET /api/events`)**
 ```sh
 curl -X GET "http://localhost:8080/api/events" -H "Accept: application/json"
 ```
-📌 **응답 예시 (200 OK)**
+ **응답 예시 (200 OK)**
 ```json
 [
     {
@@ -51,11 +62,11 @@ curl -X GET "http://localhost:8080/api/events" -H "Accept: application/json"
 
 ---
 
-### **📌 3️⃣ 특정 이벤트 조회 (`GET /api/events/{id}`)**
+### ** 특정 이벤트 조회 (`GET /api/events/{id}`)**
 ```sh
 curl -X GET "http://localhost:8080/api/events/1" -H "Accept: application/json"
 ```
-📌 **응답 예시 (200 OK)**
+**응답 예시 (200 OK)**
 ```json
 {
     "id": 1,
@@ -66,7 +77,7 @@ curl -X GET "http://localhost:8080/api/events/1" -H "Accept: application/json"
 
 ---
 
-### **📌 4️⃣ 이벤트 수정 (`PUT /api/events/{id}`)**
+### **이벤트 수정 (`PUT /api/events/{id}`)**
 ```sh
 curl -X PUT "http://localhost:8080/api/events/1" \
      -H "Content-Type: application/json" \
@@ -75,7 +86,7 @@ curl -X PUT "http://localhost:8080/api/events/1" \
           "description": "Updated description for the workshop."
          }'
 ```
-📌 **응답 예시 (200 OK)**
+ **응답 예시 (200 OK)**
 ```json
 {
     "id": 1,
@@ -86,13 +97,15 @@ curl -X PUT "http://localhost:8080/api/events/1" \
 
 ---
 
-### **📌 5️⃣ 이벤트 삭제 (`DELETE /api/events/{id}`)**
+### ** 이벤트 삭제 (`DELETE /api/events/{id}`)**
 ```sh
 curl -X DELETE "http://localhost:8080/api/events/1"
 ```
-📌 **응답 예시 (200 OK)**
+ **응답 예시 (200 OK)**
 ```
 "이벤트가 삭제되었습니다."
 ```
+
+
 
 ---
