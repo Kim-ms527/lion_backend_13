@@ -9,7 +9,7 @@
 | 할 일 추가  | `POST`    | `/api/todos`           | `{ "todo": "청소하기" }` | `{ "id": 3, "todo": "청소하기", "done": false }` |
 | 할 일 완료/미완료 변경 | `PATCH`  | `/api/todos/{id}` | 없음 | `{ "id": 1, "todo": "운동하기", "done": true }` |
 | 할 일 삭제  | `DELETE`  | `/api/todos`           | `{ "id": 1 }` | 없음 |
-| 할 일 삭제  | `DELETE`  | `/api/todos/{id}`           | 없음음 | 없음 |
+| 할 일 삭제  | `DELETE`  | `/api/todos/{id}`           | 없음 | 없음 |
 
 ---
 

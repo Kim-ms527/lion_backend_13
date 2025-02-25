@@ -107,7 +107,8 @@ function todoItemAdd(todoObj){
     li.appendChild(removeSpan);
 
     // 동적으로 x버튼을 클릭했을 때 처리해야할 이벤트를 추가한다.
-    removeSpan.addEventListener('click',function(){
+    removeSpan.addEventListener('click',function(event){
+        event.stopPropagation();
         let liObj = this.parentElement;
         console.log(liObj);
         deleteTodo(liObj.getAttribute("id"));

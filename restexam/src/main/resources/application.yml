@@ -2,6 +2,11 @@ spring:
   application:
     name: restexam
 
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 4MB
+
   datasource:
     url: jdbc:mysql://localhost:3306/jpadb
     username: chill

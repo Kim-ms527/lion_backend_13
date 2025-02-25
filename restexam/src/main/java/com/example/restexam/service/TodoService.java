@@ -27,6 +27,10 @@ public class TodoService {
 
     @Transactional
     public Todo updateTodo(Long id){
+        boolean exists = todoRepository.existsById(id);
+        if(!exists){
+            throw new EntityNotFoundException("이미 삭제된 Todo 입니다." + id);
+        }
         Todo todo = todoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("id에 해당되는  todo를 찾을 수 없어요." + id));
 
