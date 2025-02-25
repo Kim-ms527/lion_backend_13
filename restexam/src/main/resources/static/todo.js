@@ -21,7 +21,7 @@ function getTodos(){
 }
 
 function updateTodo(id){
-    let updateTodo = {"id":id};
+//    let updateTodo = {"id":id};
     let xhr = new XMLHttpRequest();
     xhr.open('PATCH','http://localhost:8080/api/todos/'+id);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
