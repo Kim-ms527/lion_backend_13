@@ -11,6 +11,6 @@ public class RestControllerExceptionHandler {
     public ResponseEntity<String> handleException(Exception e){
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("서버에서 오류가 발생했어요.");
+                .body("서버에서 오류가 발생했어요."+e.getMessage());
     }
 }
