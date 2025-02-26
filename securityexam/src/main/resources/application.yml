@@ -1,11 +1,6 @@
 spring:
   application:
-    name: restexam
-
-  servlet:
-    multipart:
-      max-file-size: 2MB
-      max-request-size: 4MB
+    name: securityexam
 
   datasource:
     url: jdbc:mysql://localhost:3306/jpadb
@@ -15,10 +10,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-      show-sql: true
-
-springdoc:
-  api-docs:
-    enabled: true
-#server:
-#  port: 80
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

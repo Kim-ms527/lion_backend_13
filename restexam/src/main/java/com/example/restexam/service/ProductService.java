@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,8 +51,17 @@ public class ProductService {
     public ProductDTO updateProduct(ProductDTO productDTO){
         Product product = productRepository.findById(productDTO.getId())
                 .orElseThrow(() -> new RuntimeException("수정 할 상품이 없어요 " + productDTO.getId()));
-        product.setName(productDTO.getName());
-        product.setPrice(productDTO.getPrice());
+
+
+        Optional.ofNullable(productDTO.getName()).ifPresent(product::setName);
+//
+//        if(productDTO.getName() != null)
+//            product.setName(productDTO.getName());
+
+//        if(productDTO.getPrice() != 0.0)     //double  --> Double  차이점.  0.0
+            product.setPrice(productDTO.getPrice());
+
+
         return ProductDTO.fromEntity(product);
     }
 
