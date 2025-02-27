@@ -20,9 +20,9 @@ public class CaramiFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("CaramiFilter doFilter() 실행 전!!");
+        log.info("CaramiFilter doFilter() 실행 전!!"+Thread.currentThread().getName());
         filterChain.doFilter(servletRequest,servletResponse);
-        log.info("CaramiFilter doFilter() 실행 후!!");
+        log.info("CaramiFilter doFilter() 실행 후!!"+Thread.currentThread().getName());
     }
 
     @Override

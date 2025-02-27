@@ -10,7 +10,7 @@ public class FilterConfig {
     public FilterRegistrationBean<CaramiFilter> caramiFilter(){
         FilterRegistrationBean<CaramiFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new CaramiFilter());
-        registrationBean.addUrlPatterns("/api/*");
+        registrationBean.addUrlPatterns("/*");
         registrationBean.setOrder(2);
         return registrationBean;
     }
