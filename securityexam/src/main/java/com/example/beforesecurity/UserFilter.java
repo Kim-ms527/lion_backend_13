@@ -15,8 +15,9 @@ public class UserFilter implements Filter {
         try {
             log.info("UserFilter  doFilter  실행 전!!" + Thread.currentThread().getName());
 
-            //스레드 로컬에 저장하고싶은 객체가 존재한다면???
-            UserContext.setUser(new User("carami"));
+            //스레드 로컬에 저장하고싶은 객체가 존재한다면???  //복잡한 로직들이 실행되서 값을 가져오는 경우가 있겠죠?
+            User user  = extractUserFromRequest(servletRequest);
+            UserContext.setUser(user);
 
 
             filterChain.doFilter(servletRequest, servletResponse);
@@ -25,5 +26,10 @@ public class UserFilter implements Filter {
         }finally {
             UserContext.clear();
         }
+    }
+    private User extractUserFromRequest(ServletRequest request){
+        //복잡한 로직을 통해서 사용자의 정보를 추출한다면??
+        String name = request.getParameter("name");
+         return new User(name);
     }
 }

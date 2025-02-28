@@ -2,6 +2,11 @@ spring:
   application:
     name: securityexam
 
+  security:
+    user:
+      name: carami
+      password: 1234
+
   datasource:
     url: jdbc:mysql://localhost:3306/jpadb
     username: chill
@@ -16,7 +21,18 @@ spring:
         format_sql: true
 
 
+  spring:
+    devtools:
+      restart:
+        enabled: true
 server:
   tomcat:
     max-threads: 200 #??? ??? ? ?? ?? ?
     min-spare-threads: 10 #?? ??? ?? ?? ??? ?
+
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: trace
