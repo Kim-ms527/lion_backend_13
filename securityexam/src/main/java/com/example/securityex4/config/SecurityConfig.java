@@ -24,7 +24,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/myinfo","/signup","/userreg","/loginform","/").permitAll()
-                        .requestMatchers("/welcome").hasRole("USER")
+                        .requestMatchers("/welcome","/shop/**").hasRole("USER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );
         http
