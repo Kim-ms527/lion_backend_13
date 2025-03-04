@@ -23,13 +23,14 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/signup","/userreg","/loginform").permitAll()
+                        .requestMatchers("/myinfo","/signup","/userreg","/loginform","/").permitAll()
+                        .requestMatchers("/welcome").hasRole("USER")
                         .anyRequest().authenticated()
                 );
-//                .formLogin(Customizer.withDefaults());
         http
                 .formLogin(form ->form
                         .loginPage("/loginform")
+                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/welcome")
                 )
                 .logout(logout ->logout

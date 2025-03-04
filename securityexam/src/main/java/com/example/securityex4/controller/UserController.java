@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class UserController {
     private final UserService userService;
+    @GetMapping("/myinfo")
+    public String myInfo(){
+        return "exam4/myinfo";
+    }
 
     @GetMapping("/welcome")
     public String welcome(){

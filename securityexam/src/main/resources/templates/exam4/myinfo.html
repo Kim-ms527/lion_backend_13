@@ -6,6 +6,23 @@
     <title>내 정보</title>
 </head>
 <body>
+<h1>내 정보 보기</h1>
+<div sec:authorize="isAuthenticated()">
+    <p>안녕하세요. <span sec:authentication="name"></span>님!! </p>
+    <p>당신의 롤은 : <span sec:authentication="principal.authorities"></span> </p>
 
+    <p>상세정보 :: </p>
+    <ul>
+        <li>사용자 이름 : <span sec:authentication="principal.username"></span></li>
+        <li>계정 만료 여부 : <span sec:authentication="principal.accountNonExpired"></span></li>
+        <li>계정 잠김 여부 : <span sec:authentication="principal.accountNonLocked"></span></li>
+        <li>자격 증명 여부 : <span sec:authentication="principal.credentialsNonExpired"></span></li>
+        <li>활성부 여부 : <span sec:authentication="principal.enabled"></span></li>
+    </ul>
+
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <p>로그인 되지 않았습니다. </p> <a href="/loginform">로그인</a> 해주세요.
+</div>
 </body>
 </html>
