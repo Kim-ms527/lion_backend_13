@@ -1,5 +1,7 @@
 package com.example.securityex4.config;
 
+import com.example.securityex4.security.CustomUserDetailsService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,15 +15,28 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @Slf4j
+@RequiredArgsConstructor
 public class SecurityConfig {
+    private final CustomUserDetailsService customUserDetailsService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/signup","/userreg","/loginform").permitAll()
                         .anyRequest().authenticated()
                 );
 //                .formLogin(Customizer.withDefaults());
+        http
+                .formLogin(form ->form
+                        .loginPage("/loginform")
+                        .defaultSuccessUrl("/welcome")
+                )
+                .logout(logout ->logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                )
+                .userDetailsService(customUserDetailsService);
 
         return http.build();
     }

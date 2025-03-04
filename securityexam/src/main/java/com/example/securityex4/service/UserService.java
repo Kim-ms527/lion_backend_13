@@ -33,4 +33,9 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+    //username에 해당하는 사용자가 있는지 체크.
+    public boolean existsUser(String username){
+        return userRepository.existsByUsername(username);
+    }
 }
