@@ -24,10 +24,22 @@ repositories {
 }
 
 dependencies {
+	// jwt & json
+	// jwts
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
 
+	//gson - json 메시지를 다루기 위한 라이브러리
+	implementation 'com.google.code.gson:gson'
+
+
+	implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+
+
+	//security
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.2.RELEASE'
-
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 

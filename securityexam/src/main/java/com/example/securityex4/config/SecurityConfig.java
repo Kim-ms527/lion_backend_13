@@ -38,6 +38,10 @@ public class SecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                 )
+                .sessionManagement(session->session
+                        .maximumSessions(1) //동시 접속 허용 개수
+                        .maxSessionsPreventsLogin(true) //디폴트 false 먼저로그인한 사용자가 차단  true - 두번째로그인안됨.
+                )
                 .userDetailsService(customUserDetailsService);
 
         return http.build();
