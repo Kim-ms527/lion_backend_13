@@ -6,11 +6,15 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 public class JwtExample {
     public static void main(String[] args) {
-        SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+//        SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+        String secret = "abcdefghijklmnopqrstuvwxzy123456";
+        byte[] bytes = secret.getBytes(StandardCharsets.UTF_8);
+        SecretKey secretKey = Keys.hmacShaKeyFor(bytes);
 
         //jwt 생성
         String jwt = Jwts.builder()
