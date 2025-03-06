@@ -61,6 +61,14 @@ public class JwtTokenizer {
                 .getBody();
     }
 
+    public Claims parseAccessToken(String accessToken){
+        return parseToken(accessToken,accessSecret);
+    }
+
+    public Claims parseRefreshToken(String refreshToken){
+        return parseToken(refreshToken,refreshSecret);
+    }
+
     public Long getUserIdFromToken(String token){
         //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsIm5hbWUiOiJ0ZXN0IiwidXNlcklkIjoxLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzQxMjIyMjIzLCJleHAiOjE3NDEyMjQwMjN9.Mw2TmisHqjWyECxjRbSYMvja2L41r1-_7m4IllBLsS4
         if(token == null || token.isBlank()){
