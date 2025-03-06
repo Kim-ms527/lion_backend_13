@@ -52,4 +52,35 @@ public class JwtTokenizer {
     public String createRefreshToken(Long id, String email, String name, String username, List<String> roles){
         return createToken(id,email,name,username,roles,REFRESH_TOKEN_EXPIRE_COUNT,refreshSecret);
     }
+
+    public Claims parseToken(String token, byte[] secretKey){
+        return  Jwts.parserBuilder()
+                .setSigningKey(getSigningKey(secretKey))
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    public Long getUserIdFromToken(String token){
+        //Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsIm5hbWUiOiJ0ZXN0IiwidXNlcklkIjoxLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzQxMjIyMjIzLCJleHAiOjE3NDEyMjQwMjN9.Mw2TmisHqjWyECxjRbSYMvja2L41r1-_7m4IllBLsS4
+        if(token == null || token.isBlank()){
+            throw new IllegalArgumentException("JWT 토큰이 없습니다.");
+        }
+
+        if(!token.startsWith("Bearer ")){
+            throw new IllegalArgumentException("유효하지 않은 형식입니다.");
+        }
+        Claims claims = parseToken(token, accessSecret);
+        if(claims == null){
+            throw new IllegalArgumentException("유효하지 않은 형식입니다.");
+        }
+        Object userId = claims.get("userId");
+        if(userId instanceof Number){
+            return ((Number)userId).longValue();
+        }else{
+            throw new IllegalArgumentException("JWT토큰에서 userId를 찾을 수 없습니다.");
+        }
+
+    }
+
 }
