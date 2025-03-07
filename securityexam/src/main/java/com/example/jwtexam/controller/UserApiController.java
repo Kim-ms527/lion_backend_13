@@ -30,8 +30,10 @@ public class UserApiController {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenizer jwtTokenizer;
     private final RefreshTokenService refreshTokenService;
-    @GetMapping("/info")
+    @GetMapping("/api/info")
     public String info(){
+
+
         return "info";
     }
 

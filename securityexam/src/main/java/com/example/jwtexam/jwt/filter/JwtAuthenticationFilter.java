@@ -1,9 +1,13 @@
 package com.example.jwtexam.jwt.filter;
 
+import com.example.jwtexam.jwt.exception.JwtExceptionCode;
 import com.example.jwtexam.jwt.token.JwtAuthenticationToken;
 import com.example.jwtexam.jwt.util.JwtTokenizer;
 import com.example.jwtexam.security.dto.CustomUserDetails;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -39,7 +43,32 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Authentication authentication = getAuthentication(token);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            }catch (Exception e){
+            }catch (ExpiredJwtException e){
+                request.setAttribute("exception", JwtExceptionCode.EXPIRED_TOKEN.getCode());
+                log.error("Expired Token : {}",token,e);
+                SecurityContextHolder.clearContext();
+                throw new BadCredentialsException("Expired token exception", e);
+            }catch (UnsupportedJwtException e){
+                request.setAttribute("exception", JwtExceptionCode.UNSUPPORTED_TOKEN.getCode());
+                log.error("Unsupported Token: {}", token, e);
+                SecurityContextHolder.clearContext();
+                throw new BadCredentialsException("Unsupported token exception", e);
+            } catch (MalformedJwtException e) {
+                request.setAttribute("exception", JwtExceptionCode.INVALID_TOKEN.getCode());
+                log.error("Invalid Token: {}", token, e);
+
+                SecurityContextHolder.clearContext();
+
+                throw new BadCredentialsException("Invalid token exception", e);
+            } catch (IllegalArgumentException e) {
+                request.setAttribute("exception", JwtExceptionCode.NOT_FOUND_TOKEN.getCode());
+                log.error("Token not found: {}", token, e);
+
+                SecurityContextHolder.clearContext();
+
+                throw new BadCredentialsException("Token not found exception", e);
+            }
+            catch (Exception e){
                 log.error("JWT Filter - Internal Error : {}", token,e);
                 SecurityContextHolder.clearContext();
                 throw new BadCredentialsException("JWT Filter - Internal Error");
