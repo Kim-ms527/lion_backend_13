@@ -58,10 +58,10 @@ public class SecurityConfig {
 
             //소셜 로그인이 되었을때..  해당 소셜의 유저 정보를 얻어올 수 있으므로,  그 정보를 처리하는 로직을 여기 둘 수 있다.
             //얻어온 정보를 어떻게 처리 할건지는 정하기 나름이다. **
-//            String token = oauth2UserRequest.getAccessToken().getTokenValue();
+            String token = oauth2UserRequest.getAccessToken().getTokenValue();
 
             String provider = oauth2UserRequest.getClientRegistration().getRegistrationId();
-             String socialId = (String) oAuth2User.getAttributes().get("id");
+             String socialId = String.valueOf(oAuth2User.getAttributes().get("id"));
              String username = (String) oAuth2User.getAttributes().get("login");
              String email = (String) oAuth2User.getAttributes().get("email");
              String avatarUrl = (String) oAuth2User.getAttributes().get("avatar_url");

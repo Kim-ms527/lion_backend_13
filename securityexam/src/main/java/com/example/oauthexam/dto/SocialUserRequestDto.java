@@ -13,4 +13,5 @@ public class SocialUserRequestDto {
     private String name;
     private String email;
     private String username;
+    private String uuid;
 }

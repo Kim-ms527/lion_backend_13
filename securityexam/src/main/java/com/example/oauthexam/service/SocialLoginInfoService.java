@@ -13,7 +13,7 @@ import java.util.Optional;
 public class SocialLoginInfoService {
     private final SocialLoginInfoRepository socialLoginInfoRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional
     public SocialLoginInfo saveSocialLoginInfo(String provider, String socialId){
         SocialLoginInfo socialLoginInfo = new SocialLoginInfo();
         socialLoginInfo.setProvider(provider);
