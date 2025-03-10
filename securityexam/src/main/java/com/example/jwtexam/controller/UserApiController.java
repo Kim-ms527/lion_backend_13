@@ -38,7 +38,7 @@ public class UserApiController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody UserLoginDto userLoginDto, HttpServletResponse response){
+    public ResponseEntity<?> login(@RequestBody UserLoginDto userLoginDto, HttpServletResponse response){
         //1. username이 우리 서버에 있는지..
         User user = userService.findByUsername(userLoginDto.getUsername());
         if(user == null){
@@ -97,5 +97,17 @@ public class UserApiController {
                 .build();
 
         return ResponseEntity.ok(loginResponseDto);
+    }
+
+    @PostMapping("/refreshToken")
+    public ResponseEntity<?> requestRefresh(){
+        //리프레스 토큰..  무슨일 하면 좋을까요?
+        //리프레시 토큰을 받으면.  내 DB 에 있어요??   있을때만 다시 accessToken을 발급해서
+        //보내주면
+
+        //엑세스 토큰을 발급할때..  리프레스 토큰도 같이 발급할까요?
+
+
+        return  null;
     }
 }
