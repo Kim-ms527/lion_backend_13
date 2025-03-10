@@ -1,15 +1,15 @@
 package com.example.oauthexam.security;
 
+import com.example.oauthexam.entity.Role;
 import com.example.oauthexam.entity.SocialLoginInfo;
 import com.example.oauthexam.entity.User;
 import com.example.oauthexam.service.SocialLoginInfoService;
 import com.example.oauthexam.service.UserService;
-import com.nimbusds.jose.proc.SecurityContext;
-import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -51,6 +52,20 @@ public class CustomOAuth2AuthenticationSuccessHandler implements AuthenticationS
             User user = userOptional.get();
             //이때 얻어낸 User 정보를 어디에 넣어줄까요??
 
+            //CustomUserDetails  생성  -- 누가 사용하라고??
+            CustomUserDetails customUserDetails = new CustomUserDetails(user.getUsername(),
+                    user.getPassword(),
+                    user.getName(),
+                    user.getRoles()
+                            .stream()
+                            .map(Role::getName)
+                            .collect(Collectors.toList()));
+
+            Authentication newAuth =
+                    new UsernamePasswordAuthenticationToken(customUserDetails,null,customUserDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(newAuth);
+
+            response.sendRedirect("/welcome");
 
         }else{
             //소셜로 아직 회원가입이 안되었을때..  무슨일을 해야할까요??  이 사용자가 우리 어플리케이션에 처음으로 들어왔을때..(소셜로그인으로)

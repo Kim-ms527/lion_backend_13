@@ -1,5 +1,6 @@
 package com.example.oauthexam.config;
 
+import com.example.oauthexam.security.CustomOAuth2AuthenticationSuccessHandler;
 import com.example.oauthexam.service.SocialUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final SocialUserService socialUserService;
+    private final CustomOAuth2AuthenticationSuccessHandler customOAuth2AuthenticationSuccessHandler;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
@@ -43,8 +45,7 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfo ->userInfo
                                 .userService(this.oauth2UserService())
                         )
-//                      .successHandler()
-
+                      .successHandler(customOAuth2AuthenticationSuccessHandler)
                 );
 
         return http.build();

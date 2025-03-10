@@ -1,7 +1,6 @@
 package com.example.oauthexam.entity;
 
 
-import com.example.securityex4.domain.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
