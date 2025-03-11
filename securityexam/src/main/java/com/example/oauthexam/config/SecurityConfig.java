@@ -46,6 +46,11 @@ public class SecurityConfig {
                                 .userService(this.oauth2UserService())
                         )
                       .successHandler(customOAuth2AuthenticationSuccessHandler)
+                )
+                .logout(logout->logout
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
                 );
 
         return http.build();

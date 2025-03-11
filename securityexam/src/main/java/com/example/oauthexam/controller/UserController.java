@@ -2,11 +2,15 @@ package com.example.oauthexam.controller;
 
 import com.example.oauthexam.dto.SocialUserRequestDto;
 import com.example.oauthexam.entity.SocialLoginInfo;
+import com.example.oauthexam.entity.User;
 import com.example.oauthexam.security.CustomUserDetails;
 import com.example.oauthexam.service.SocialLoginInfoService;
 import com.example.oauthexam.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -68,18 +73,23 @@ public class UserController {
                 return "redirect:/error";   //20분 이상 경과하면.. 에러페이지로 리다이렉트!!!
             }
 
-            userService.saveUser(requestDto,passwordEncoder);
-            return "redirect:/info";
+            userService.saveUser(requestDto, passwordEncoder);
+
+
+            return "redirect:/";
         }else {
             return "redirect:/error";
         }
 
     }
     @GetMapping("/info")
-    public String info(@AuthenticationPrincipal CustomUserDetails customUserDetails, Model model){
-        model.addAttribute("user",customUserDetails);
+    public String info(@AuthenticationPrincipal Object customUserDetails, Model model){
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user",principal);
 
         return "oauth/info";
     }
+
 
 }
