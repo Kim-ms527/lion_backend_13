@@ -7,6 +7,7 @@ import com.example.oauthexam.security.CustomUserDetails;
 import com.example.oauthexam.service.SocialLoginInfoService;
 import com.example.oauthexam.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
     private final UserService userService;
     private final SocialLoginInfoService socialLoginInfoService;
@@ -66,6 +68,7 @@ public class UserController {
                 requestDto.getProvider(), requestDto.getUuid(), requestDto.getSocialId());
 
         if(socialLoginInfoOptional.isPresent()){
+            log.info("socialLoginInfoOptional.isPresent()"+socialLoginInfoOptional.isPresent());
             SocialLoginInfo socialLoginInfo = socialLoginInfoOptional.get();
             LocalDateTime now = LocalDateTime.now();
             Duration duration = Duration.between(socialLoginInfo.getCreateAt(), now);

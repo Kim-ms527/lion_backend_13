@@ -58,7 +58,8 @@ public class CustomOAuth2AuthenticationSuccessHandler implements AuthenticationS
                     user.getName(),
                     user.getRoles()
                             .stream()
-                            .map(Role::getName)
+//                            .map(Role::getName)
+                            .map(role -> "ROLE_"+role.getName())
                             .collect(Collectors.toList()));
 
             Authentication newAuth =
