@@ -3,9 +3,11 @@ package com.example.swaggerexam.controller;
 import com.example.swaggerexam.dto.LoginRequestDto;
 import com.example.swaggerexam.dto.RegisterRequestDto;
 import com.example.swaggerexam.dto.UserDto;
+import com.example.swaggerexam.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/auth")
 @Tag(name = "Authentication", description = "인증 관련 API")
+@RequiredArgsConstructor
 public class AuthController {
+    private final UserService userService;
     @Operation(
             summary = "회원가입",
             description = "이메일과 비밀번호를 입력하여 회원가입을 합니다.",
@@ -24,8 +28,9 @@ public class AuthController {
     public ResponseEntity<String> register(@RequestBody RegisterRequestDto requestDto){
 
         //여기 로직은 나중에 여러분이 완성해주세요.
+        String message = userService.register(requestDto.getEmail(), requestDto.getPassword());
 
-        return ResponseEntity.ok("ok");
+        return ResponseEntity.ok(message);
     }
 
     @PostMapping("/login")
