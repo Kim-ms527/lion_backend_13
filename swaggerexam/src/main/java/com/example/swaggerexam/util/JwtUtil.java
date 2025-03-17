@@ -41,4 +41,8 @@ public class JwtUtil {
     public void invalidateToken(String token) {
         invalidTokens.put(token, true);
     }
+
+    public static void main(String[] args) {
+        Algorithm algorithm = Algorithm.HMAC256(SECRET);
+    }
 }

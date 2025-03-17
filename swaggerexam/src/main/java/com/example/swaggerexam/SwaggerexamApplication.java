@@ -17,9 +17,8 @@ public class SwaggerexamApplication {
 	@Bean
 	public CommandLineRunner run(UserService userService){
 		return args -> {
-			String message = userService.register("abc@abc.com", "1234");
-			System.out.println(message);
-
+//			String message = userService.register("abc@abc.com", "1234");
+//			System.out.println(message);
 		};
 	}
 
